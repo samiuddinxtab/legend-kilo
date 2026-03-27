@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import Icon from '../../components/Icons.astro';
+import { BLOG_ARTICLES } from '../../data/site';
+
+export function getStaticPaths() {
+  return BLOG_ARTICLES.map(article => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+
+const title = `${article.title} | LEGEND INDUSTRIES Blog`;
+const description = article.description;
+
+// Article schema for JSON-LD
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.title,
+  description: article.description,
+  articleBody: article.content,
+  datePublished: article.datePublished,
+  author: {
+    "@type": "Person",
+    name: article.author,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "LEGEND INDUSTRIES",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://legendindustries.in/logo.png",
+    },
+  },
+  image: `https://legendindustries.in${article.image}`,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://legendindustries.in/blog/${article.slug}`,
+  },
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  
+  <Header />
+
+  <main id="main-content">
+    <article class="section-padding">
+      <div class="container-site max-w-3xl">
+        <nav aria-label="Breadcrumb" class="mb-8">
+          <ol class="flex items-center gap-2 text-sm text-neutral-500">
+            <li><a href="/" class="hover:text-brand-500">Home</a></li>
+            <li><span aria-hidden="true">/</span></li>
+            <li><a href="/blog" class="hover:text-brand-500">Blog</a></li>
+            <li><span aria-hidden="true">/</span></li>
+            <li class="text-neutral-900 font-medium">{article.title.substring(0, 40)}...</li>
+          </ol>
+        </nav>
+        
+        <header class="mb-8">
+          <time class="text-sm text-neutral-500 uppercase tracking-wider">
+            {new Date(article.datePublished).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
+          </time>
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mt-2 mb-4">
+            {article.title}
+          </h1>
+          <p class="text-lg text-neutral-600 leading-relaxed">
+            {article.description}
+          </p>
+          <div class="flex items-center gap-2 mt-4 text-sm text-neutral-500">
+            <Icon name="user" size={16} />
+            <span>{article.author}</span>
+          </div>
+        </header>
+        
+        <div class="prose prose-neutral max-w-none">
+          {article.content.split('\n\n').map(paragraph => (
+            <p class="mb-6 text-neutral-700 leading-relaxed">{paragraph}</p>
+          ))}
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-neutral-200">
+          <div class="card bg-brand-50 border-brand-200">
+            <h2 class="text-lg font-bold text-neutral-900 mb-2">Need More Information?</h2>
+            <p class="text-neutral-600 mb-4">
+              Our team can help you with personalized recommendations for your bulk manufacturing requirements.
+            </p>
+            <WhatsAppButton
+              message={`Hi, I read your article "${article.title}" and would like to discuss my requirements.`}
+              label="Discuss Your Needs"
+            />
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</BaseLayout>

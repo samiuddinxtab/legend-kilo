@@ -8,6 +8,7 @@ export const NAV_ITEMS = [
   { href: "/capabilities", label: "Capabilities" },
   { href: "/process", label: "Process" },
   { href: "/company", label: "Company" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -90,6 +91,18 @@ export const FAQS = [
   {
     q: "How do I get a quote?",
     a: "Share your requirement via WhatsApp or email — product type, quantity, and branding needs. We'll respond with options and pricing.",
+  },
+  {
+    q: "What materials do you use for bag manufacturing?",
+    a: "We work with a variety of materials including canvas, nylon, polyester, jute, cotton, and leatherette. Material selection depends on your requirements, budget, and intended use case.",
+  },
+  {
+    q: "Do you provide samples before bulk production?",
+    a: "Yes, we provide design mockups and samples for custom orders. Sample approval is required before production begins to ensure the final product meets your expectations.",
+  },
+  {
+    q: "What is your pricing structure?",
+    a: "Pricing depends on product type, quantity, materials, and customization requirements. We offer competitive pricing for bulk orders. Share your requirements for a detailed quote.",
   },
 ] as const;
 
@@ -254,4 +267,69 @@ export const WHY_CHOOSE = [
   "PAN India supply capability",
   "Full customization — logo to complete design",
   "Structured quality checks before dispatch",
+] as const;
+
+export const BLOG_ARTICLES = [
+  {
+    slug: "choosing-right-bag-material-corporate-gifting",
+    title: "Choosing the Right Bag Material for Corporate Gifting",
+    description: "A comprehensive guide to selecting the perfect material for your corporate gift bags — from canvas to jute, we break down the pros and cons of each option.",
+    content: `When it comes to corporate gifting, the material you choose speaks volumes about your brand. Here's our expert guide to selecting the right bag material for your business needs.
+
+Canvas bags offer durability and a professional look, making them ideal for corporate employee kits and long-term brand visibility. They're cost-effective for bulk orders and can withstand repeated use.
+
+Jute and cotton eco-friendly materials resonate with organizations prioritizing sustainability. These materials appeal to environmentally conscious clients and demonstrate your brand's commitment to responsible business practices.
+
+Nylon and polyester are lightweight options perfect for promotional events and conferences. They offer vibrant color printing capabilities and quick drying properties.
+
+Leatherette provides a premium feel for high-end corporate gifts, though at a higher price point. It's perfect for executive gifts andVIP client presentations.`,
+    datePublished: "2026-03-15",
+    author: "LEGEND INDUSTRIES Team",
+    image: "/blog/bag-materials.jpg",
+  },
+  {
+    slug: "bulk-order-timeline-expectations",
+    title: "What to Expect: Bulk Order Timeline Breakdown",
+    description: "Understanding the production timeline for bulk bag orders helps you plan better. Learn the typical stages from requirement to delivery.",
+    content: `Planning a bulk order? Understanding the timeline helps ensure smooth execution and on-time delivery.
+
+Stage 1: Requirement Gathering (1-2 days)
+We discuss your product specifications, quantity, branding requirements, and timeline. The more details you provide upfront, the faster we can move forward.
+
+Stage 2: Quote & Discussion (1-2 days)
+Based on your requirements, we provide a detailed quote including material options, pricing, and production timeline. This is where we align expectations.
+
+Stage 3: Sample/Design Approval (3-5 days)
+For custom orders, we create design mockups or physical samples. Your approval on this stage locks in final specifications.
+
+Stage 4: Production (1-2 weeks)
+Actual production time depends on order size and customization complexity. We maintain quality checks at every stage.
+
+Stage 5: Quality & Dispatch (1-2 days)
+Final quality inspection, packaging, and dispatch. Delivery across India takes additional 3-7 days depending on location.`,
+    datePublished: "2026-03-10",
+    author: "LEGEND INDUSTRIES Team",
+    image: "/blog/production-timeline.jpg",
+  },
+  {
+    slug: "maximizing-roi-corporate-merchandise",
+    title: "Maximizing ROI on Corporate Merchandise",
+    description: "Strategic insights on getting the most value from your corporate merchandise budget while building lasting brand impressions.",
+    content: `Corporate merchandise is an investment in brand visibility. Here's how to maximize your return on investment.
+
+Quantity vs. Quality Balance
+For maximum reach, balance quantity with quality. A well-made bag used repeatedly provides more brand exposure than cheap items discarded after one use.
+
+Customization That Stands Out
+Invest in customization that makes your brand memorable. Quality printing, thoughtful design, and durable materials ensure your merchandise gets used and seen.
+
+Strategic Distribution
+Focus on high-impact distribution: employee welcome kits, client gifts, event giveaways, and dealer/distributor support. Each touchpoint reinforces brand recognition.
+
+Long-term Relationships
+Building lasting supplier relationships leads to better pricing, priority production, and consistent quality across orders. This partnership approach maximizes value over time.`,
+    datePublished: "2026-03-05",
+    author: "LEGEND INDUSTRIES Team",
+    image: "/blog/corporate-roi.jpg",
+  },
 ] as const;
