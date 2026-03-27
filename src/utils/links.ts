@@ -14,12 +14,15 @@ export function getDefaultInquiryMessage(fields: {
   quantity: string;
   details: string;
 }): string {
-  return `Hi, I'm interested in bulk manufacturing from LEGEND INDUSTRIES.
+  return `Hi LEGEND INDUSTRIES team, I need a bulk manufacturing quote.
 
 Company: ${fields.company || "[Your Company]"}
-Product: ${fields.product || "[Product Category]"}
-Quantity: ${fields.quantity || "[Approx. Quantity]"}
-Details: ${fields.details || "[Any specific requirements]"}
+Category: ${fields.product || "[Product Category]"}
+Estimated Quantity: ${fields.quantity || "[Approx. Quantity]"}
+Branding Required: [Logo print / embroidery / other]
+Delivery Location: [City, State]
+Expected Delivery Date: [DD/MM/YYYY]
+Additional Details: ${fields.details || "[Any specific requirements]"}
 
-Please share details on pricing and timelines.`;
+Please share MOQ, pricing slabs, sampling process, and dispatch timeline.`;
 }
