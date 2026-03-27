@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import InquiryWidget from '../components/InquiryWidget.astro';
+import Icon from '../components/Icons.astro';
+import { EMAIL_ADDRESS, PHONE_NUMBER, PHONE_TEL } from '../data/site';
+
+const title = "Contact | LEGEND INDUSTRIES";
+const description = "Contact LEGEND INDUSTRIES for bulk bag manufacturing and corporate gifting. WhatsApp, email, or call. Hyderabad-based, PAN India supply.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+
+  <main id="main-content">
+    <section aria-labelledby="contact-hero" class="bg-neutral-900 text-white">
+      <div class="container-site section-padding">
+        <span class="inline-block text-sm font-semibold tracking-widest uppercase text-brand-400 mb-4">Get In Touch</span>
+        <h1 id="contact-hero" class="text-4xl sm:text-5xl font-bold mb-6">
+          Let's Start a Conversation
+        </h1>
+        <p class="text-lg text-neutral-300 max-w-2xl">
+          Whether you need bulk bags, corporate gifts, or custom products — we're here to help. Reach out via WhatsApp for the fastest response.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container-site">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div>
+            <h2 class="text-2xl font-bold text-neutral-900 mb-8">Contact Information</h2>
+            
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center">
+                  <Icon name="phone" class="text-brand-500" size={24} />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-neutral-900 mb-1">Phone</h3>
+                  <a href={PHONE_TEL} class="text-neutral-600 hover:text-brand-500 transition-colors">
+                    {PHONE_NUMBER}
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center">
+                  <Icon name="mail" class="text-brand-500" size={24} />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-neutral-900 mb-1">Email</h3>
+                  <a href={`mailto:${EMAIL_ADDRESS}`} class="text-neutral-600 hover:text-brand-500 transition-colors">
+                    {EMAIL_ADDRESS}
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center">
+                  <Icon name="mapPin" class="text-brand-500" size={24} />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-neutral-900 mb-1">Location</h3>
+                  <p class="text-neutral-600">Hyderabad, Telangana, India</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center">
+                  <Icon name="clock" class="text-brand-500" size={24} />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-neutral-900 mb-1">Business Hours</h3>
+                  <p class="text-neutral-600">Mon – Sat: 9:30 AM – 6:30 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-10">
+              <h3 class="font-semibold text-neutral-900 mb-4">Quick Connect</h3>
+              <div class="flex flex-wrap gap-3">
+                <WhatsAppButton message="Hi, I'd like to discuss a bulk order." label="WhatsApp" size="sm" />
+                <a 
+                  href={PHONE_TEL}
+                  class="inline-flex items-center gap-2 py-2 px-4 text-sm font-medium rounded-lg border border-neutral-300 text-neutral-700 hover:bg-neutral-50 transition-colors"
+                >
+                  <Icon name="phone" size={16} />
+                  Call Now
+                </a>
+                <a 
+                  href={`mailto:${EMAIL_ADDRESS}`}
+                  class="inline-flex items-center gap-2 py-2 px-4 text-sm font-medium rounded-lg border border-neutral-300 text-neutral-700 hover:bg-neutral-50 transition-colors"
+                >
+                  <Icon name="mail" size={16} />
+                  Email
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <InquiryWidget />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

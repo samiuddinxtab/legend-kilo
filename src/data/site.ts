@@ -30,6 +30,8 @@ export const EMAIL_ADDRESS = "info@legendindustries.in";
 export const PHONE_NUMBER = "+91 98765 43210";
 export const PHONE_TEL = "+919876543210";
 
+export const SITE_URL = "https://legendindustries.in";
+
 export const CAPABILITIES = [
   {
     icon: "factory" as const,

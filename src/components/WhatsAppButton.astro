@@ -1,0 +1,29 @@
+---
+import Icon from './Icons.astro';
+import { getWhatsAppHref } from '../utils/links';
+
+interface Props {
+  message: string;
+  label?: string;
+  class?: string;
+  size?: "sm" | "md" | "lg";
+}
+
+const { message, label = "Chat on WhatsApp", class: className = "", size = "md" } = Astro.props;
+
+const sizeClasses = {
+  sm: "py-2 px-4 text-sm",
+  md: "py-3 px-6 text-base",
+  lg: "py-4 px-8 text-lg",
+};
+---
+
+<a
+  href={getWhatsAppHref(message)}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`inline-flex items-center justify-center gap-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 active:bg-green-800 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 min-h-12 ${sizeClasses[size]} ${className}`}
+>
+  <Icon name="whatsapp" size={20} />
+  {label}
+</a>

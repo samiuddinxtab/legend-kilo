@@ -1,0 +1,117 @@
+---
+import { FOOTER_LINKS, PRODUCT_LINKS, WHATSAPP_NUMBER, EMAIL_ADDRESS, PHONE_TEL, PHONE_NUMBER } from '../data/site';
+import { getWhatsAppHref } from '../utils/links';
+import Icon from './Icons.astro';
+---
+
+<footer role="contentinfo" class="bg-neutral-900 text-neutral-300">
+  <div class="container-site section-padding">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a
+          href="/"
+          class="inline-block font-bold text-xl text-white mb-4"
+          aria-label="LEGEND INDUSTRIES — Home"
+        >
+          <span class="text-brand-400">LEGEND</span>{" "}
+          <span class="text-neutral-400 font-normal text-sm">
+            INDUSTRIES
+          </span>
+        </a>
+        <p class="text-sm text-neutral-400 leading-relaxed mb-6">
+          Hyderabad-based bag manufacturing and corporate gifting since
+          1998. Bulk production, custom branding, PAN India supply.
+        </p>
+        <a
+          href={getWhatsAppHref("Hi, I'm interested in bulk bag manufacturing from LEGEND INDUSTRIES. Please share details.")}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp text-sm py-2 px-4"
+          aria-label="Contact us on WhatsApp"
+        >
+          <Icon name="whatsapp" size={18} />
+          WhatsApp Us
+        </a>
+      </div>
+
+      <nav aria-label="Footer navigation">
+        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+          Quick Links
+        </h4>
+        <ul class="space-y-3">
+          {FOOTER_LINKS.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm text-neutral-400 hover:text-brand-400 transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav aria-label="Product categories">
+        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+          Products
+        </h4>
+        <ul class="space-y-3">
+          {PRODUCT_LINKS.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm text-neutral-400 hover:text-brand-400 transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+          Contact
+        </h4>
+        <address class="not-italic space-y-4">
+          <div class="flex items-start gap-3">
+            <Icon name="mapPin" size={18} />
+            <span class="text-sm text-neutral-400">
+              Hyderabad, Telangana
+              <br />
+              India — PAN India Supply
+            </span>
+          </div>
+          <div>
+            <a
+              href={`tel:${PHONE_TEL}`}
+              class="flex items-center gap-3 text-sm text-neutral-400 hover:text-brand-400 transition-colors"
+            >
+              <Icon name="phone" size={18} />
+              {PHONE_NUMBER}
+            </a>
+          </div>
+          <div>
+            <a
+              href={`mailto:${EMAIL_ADDRESS}`}
+              class="flex items-center gap-3 text-sm text-neutral-400 hover:text-brand-400 transition-colors"
+            >
+              <Icon name="mail" size={18} />
+              {EMAIL_ADDRESS}
+            </a>
+          </div>
+        </address>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-neutral-500">
+        &copy; {new Date().getFullYear()} LEGEND INDUSTRIES. All rights reserved.
+      </p>
+      <p class="text-xs text-neutral-500">
+        Bag Manufacturing &middot; Corporate Gifting &middot; Hyderabad
+      </p>
+    </div>
+  </div>
+</footer>
