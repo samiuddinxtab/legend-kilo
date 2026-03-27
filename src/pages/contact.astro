@@ -133,19 +133,6 @@ const description = "Contact LEGEND INDUSTRIES for bulk bag manufacturing and co
             </article>
           ))}
         </div>
-
-        <h2 id="maps-heading" class="sr-only">Google Maps Embed</h2>
-        <div class="grid lg:grid-cols-2 gap-6">
-          {LOCATIONS.map((location) => (
-            <iframe
-              title={`${location.name} map`}
-              src={`https://www.google.com/maps?q=${encodeURIComponent(location.embedQuery)}&output=embed`}
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              class="w-full h-[320px] rounded-xl border border-neutral-200 bg-white"
-            ></iframe>
-          ))}
-        </div>
       </div>
     </section>
   </main>
