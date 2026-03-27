@@ -194,6 +194,10 @@ export const BAG_TYPES = [
   "School bags",
   "Drawstring bags",
   "Promotional bags",
+  "Gym bags",
+  "Sling and messenger bags",
+  "Conference and event bags",
+  "Retail packaging bags",
 ] as const;
 
 export const ECO_TYPES = [
@@ -201,6 +205,8 @@ export const ECO_TYPES = [
   "Cotton tote bags",
   "Eco-friendly promotional bags",
   "Reusable shopping bags",
+  "Organic cotton drawstring bags",
+  "Bottle carry and produce bags",
 ] as const;
 
 export const CORPORATE_TYPES = [
@@ -208,12 +214,17 @@ export const CORPORATE_TYPES = [
   "Corporate kits",
   "Promotional combinations",
   "Employee onboarding kits",
+  "Executive gifting sets",
+  "Event giveaway packs",
 ] as const;
 
 export const UTILITY_TYPES = [
   "Water bottles",
   "Daily-use branded items",
   "Combo gift sets",
+  "Lunch and storage accessories",
+  "Desk essentials",
+  "Travel utility kits",
 ] as const;
 
 export const CUSTOMIZATION_OPTIONS = [
