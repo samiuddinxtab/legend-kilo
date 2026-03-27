@@ -6,7 +6,7 @@ import SectionHeader from '../components/SectionHeader.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import InquiryWidget from '../components/InquiryWidget.astro';
 import Icon from '../components/Icons.astro';
-import { EMAIL_ADDRESS, PHONE_NUMBER, PHONE_TEL } from '../data/site';
+import { EMAIL_ADDRESS, PHONE_NUMBER, PHONE_TEL, LOCATIONS } from '../data/site';
 
 const title = "Contact | LEGEND INDUSTRIES";
 const description = "Contact LEGEND INDUSTRIES for bulk bag manufacturing and corporate gifting. WhatsApp, email, or call. Hyderabad-based, PAN India supply.";
@@ -65,7 +65,7 @@ const description = "Contact LEGEND INDUSTRIES for bulk bag manufacturing and co
                 </div>
                 <div>
                   <h3 class="font-semibold text-neutral-900 mb-1">Location</h3>
-                  <p class="text-neutral-600">Hyderabad, Telangana, India</p>
+                  <p class="text-neutral-600">Office + Factory locations in Hyderabad, Telangana</p>
                 </div>
               </div>
 
@@ -105,6 +105,46 @@ const description = "Contact LEGEND INDUSTRIES for bulk bag manufacturing and co
           <div>
             <InquiryWidget />
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-neutral-100" aria-labelledby="maps-heading">
+      <div class="container-site">
+        <SectionHeader
+          label="Locations"
+          title="Visit Our Office or Factory"
+          description="Use the map below to locate our Hyderabad office and factory."
+        />
+
+        <div class="grid lg:grid-cols-2 gap-6 mb-8">
+          {LOCATIONS.map((location) => (
+            <article class="card">
+              <h3 class="text-lg font-bold text-neutral-900 mb-2">{location.name}</h3>
+              <p class="text-sm text-neutral-600 leading-relaxed mb-4">{location.address}</p>
+              <a
+                href={location.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-brand-500 hover:text-brand-600"
+              >
+                Open in Google Maps <Icon name="arrowRight" size={16} />
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <h2 id="maps-heading" class="sr-only">Google Maps Embed</h2>
+        <div class="grid lg:grid-cols-2 gap-6">
+          {LOCATIONS.map((location) => (
+            <iframe
+              title={`${location.name} map`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(location.embedQuery)}&output=embed`}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="w-full h-[320px] rounded-xl border border-neutral-200 bg-white"
+            ></iframe>
+          ))}
         </div>
       </div>
     </section>

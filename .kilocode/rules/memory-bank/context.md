@@ -96,3 +96,4 @@ The website for LEGEND INDUSTRIES has been migrated from Next.js to Astro. All 5
 | 2026-03-28 | Fixed build issues: Tailwind CSS v4 config, Icons component rewrite |
 | 2026-03-27 | Reimagined Capabilities page with stronger visual hierarchy, expanded category presentation, and richer product range content across data lists |
 | 2026-03-27 | Updated production contact info, rebuilt blog as image-free SEO library (12 posts), improved inquiry qualification/CTA, and added performance headers/font loading improvements |
+| 2026-03-27 | Added Google Maps embeds and direct map links for office and factory locations on Contact page for easier navigation |

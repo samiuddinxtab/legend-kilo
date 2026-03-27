@@ -35,6 +35,21 @@ export const PHONE_TEL = "+919052088880";
 
 export const SITE_URL = "https://legendindustries.in";
 
+export const LOCATIONS = [
+  {
+    name: "LEGEND INDUSTRIES BAG MANUFACTURERS (Office)",
+    address: "VN Plaza, 10-3-773/2, Vijaynagar Colony, Masab Tank, Hyderabad, Telangana 500057",
+    mapsUrl: "https://maps.app.goo.gl/ppFxYiXzBsNmtgmR9",
+    embedQuery: "VN Plaza, 10-3-773/2, Vijaynagar Colony, Masab Tank, Hyderabad, Telangana 500057",
+  },
+  {
+    name: "LEGEND INDUSTRIES (Factory)",
+    address: "H. No. 12, 2-37/1, A/46/A, Zeba Bagh, Asif Nagar, Hyderabad, Telangana 500028",
+    mapsUrl: "https://maps.app.goo.gl/bKzYGcqhrKtQbsBm8",
+    embedQuery: "H. No. 12, 2-37/1, A/46/A, Zeba Bagh, Asif Nagar, Hyderabad, Telangana 500028",
+  },
+] as const;
+
 export const CAPABILITIES = [
   {
     icon: "factory" as const,
