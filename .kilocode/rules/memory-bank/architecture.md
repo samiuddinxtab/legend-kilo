@@ -1,120 +1,94 @@
-# System Patterns: Next.js Starter Template
+# System Patterns: LEGEND INDUSTRIES Website
 
 ## Architecture Overview
 
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx          # Root layout + metadata
+├── app/
+│   ├── layout.tsx          # Root layout + metadata + JSON-LD schemas
 │   ├── page.tsx            # Home page
-│   ├── globals.css         # Tailwind imports + global styles
-│   └── favicon.ico         # Site icon
-└── (expand as needed)
-    ├── components/         # React components (add when needed)
-    ├── lib/                # Utilities and helpers (add when needed)
-    └── db/                 # Database files (add via recipe)
+│   ├── globals.css         # Design system (Tailwind v4)
+│   ├── capabilities/
+│   │   └── page.tsx        # Products & customization
+│   ├── process/
+│   │   └── page.tsx        # Order flow
+│   ├── company/
+│   │   └── page.tsx        # About & credibility
+│   └── contact/
+│       └── page.tsx        # WhatsApp-first conversion
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx      # Sticky header + mobile nav ("use client")
+│   │   └── Footer.tsx      # Site footer
+│   └── ui/
+│       ├── WhatsAppButton.tsx   # Reusable WhatsApp CTA
+│       ├── InquiryWidget.tsx    # Pre-filled message generator ("use client")
+│       └── SectionHeader.tsx    # Reusable section header
+public/
+├── robots.txt              # SEO
+├── sitemap.xml             # SEO
+└── favicon.ico             # Icon
 ```
 
 ## Key Design Patterns
 
-### 1. App Router Pattern
+### 1. Server Components by Default
+All pages are Server Components. Only two components use `"use client"`:
+- `Header.tsx` — mobile menu toggle
+- `InquiryWidget.tsx` — form state management
 
-Uses Next.js App Router with file-based routing:
-```
-src/app/
-├── page.tsx           # Route: /
-├── about/page.tsx     # Route: /about
-├── blog/
-│   ├── page.tsx       # Route: /blog
-│   └── [slug]/page.tsx # Route: /blog/:slug
-└── api/
-    └── route.ts       # API Route: /api
-```
+### 2. No Forms, Pre-filled Messages
+Instead of server-side form handling:
+- InquiryWidget collects inputs in React state
+- Generates URL-encoded WhatsApp/email links
+- User clicks → opens WhatsApp/email with pre-filled message
+- No server processing, no database, no validation needed
 
-### 2. Component Organization Pattern (When Expanding)
+### 3. Design System via CSS
+Tailwind CSS v4 with `@theme` for:
+- Brand colors (orange accent)
+- Neutral palette
+- Custom component classes (btn-primary, card, section-label, etc.)
+- 8px grid spacing via Tailwind utilities
 
-```
-src/components/
-├── ui/                # Reusable UI components (Button, Card, etc.)
-├── layout/            # Layout components (Header, Footer)
-├── sections/          # Page sections (Hero, Features, etc.)
-└── forms/             # Form components
-```
+### 4. SEO via Metadata API + JSON-LD
+- Next.js Metadata API for page-level SEO
+- JSON-LD schemas in layout.tsx (Organization, LocalBusiness, FAQPage)
+- robots.txt + sitemap.xml in public/
 
-### 3. Server Components by Default
+## Component Patterns
 
-All components are Server Components unless marked with `"use client"`:
+### WhatsAppButton
 ```tsx
-// Server Component (default) - can fetch data, access DB
-export default function Page() {
-  return <div>Server rendered</div>;
-}
-
-// Client Component - for interactivity
-"use client";
-export default function Counter() {
-  const [count, setCount] = useState(0);
-  return <button onClick={() => setCount(c => c + 1)}>{count}</button>;
-}
+<WhatsAppButton
+  message="Pre-filled message text"
+  label="Button Label"
+  size="md"  // sm | md | lg
+/>
 ```
 
-### 4. Layout Pattern
+### InquiryWidget
+Self-contained component with:
+- Company name input
+- Product category dropdown
+- Quantity range dropdown
+- Optional details textarea
+- WhatsApp + Email buttons (enabled only when required fields filled)
 
-Layouts wrap pages and can be nested:
+### SectionHeader
 ```tsx
-// src/app/layout.tsx - Root layout
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
-
-// src/app/dashboard/layout.tsx - Nested layout
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex">
-      <Sidebar />
-      <main>{children}</main>
-    </div>
-  );
-}
+<SectionHeader
+  label="Section Label"
+  title="Section Title"
+  description="Optional description"
+  align="left"  // left | center
+/>
 ```
 
 ## Styling Conventions
 
-### Tailwind CSS Usage
-- Utility classes directly on elements
-- Component composition for repeated patterns
+- Tailwind utilities directly on elements
+- Custom component classes for repeated patterns (btn-primary, card, etc.)
 - Responsive: `sm:`, `md:`, `lg:`, `xl:`
-
-### Common Patterns
-```tsx
-// Container
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-// Responsive grid
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-// Flexbox centering
-<div className="flex items-center justify-center">
-```
-
-## File Naming Conventions
-
-- Components: PascalCase (`Button.tsx`, `Header.tsx`)
-- Utilities: camelCase (`utils.ts`, `helpers.ts`)
-- Pages/Routes: lowercase (`page.tsx`, `layout.tsx`)
-- Directories: kebab-case (`api-routes/`) or lowercase (`components/`)
-
-## State Management
-
-For simple needs:
-- `useState` for local component state
-- `useContext` for shared state
-- Server Components for data fetching
-
-For complex needs (add when necessary):
-- Zustand for client state
-- React Query for server state
+- Mobile-first approach (base styles are mobile, scale up)
+- Max-width container: `max-w-6xl`

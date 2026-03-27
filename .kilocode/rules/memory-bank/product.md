@@ -1,44 +1,39 @@
-# Product Context: Next.js Starter Template
+# Product Context: LEGEND INDUSTRIES Website
 
-## Why This Template Exists
+## Why This Website Exists
 
-Starting a new Next.js project involves boilerplate setup, configuration decisions, and establishing patterns. This template provides a clean, opinionated starting point that eliminates setup friction and establishes best practices from the start. It's optimized for AI-assisted development, where an AI can quickly extend the template based on user requirements.
+LEGEND INDUSTRIES needs a web presence that does three things: filter bad leads, qualify good buyers, and convert them through direct communication channels. Traditional contact forms waste time — this website uses WhatsApp and email pre-filled messages instead.
 
 ## Problems It Solves
 
-1. **Setup Time**: Eliminates boilerplate configuration (TypeScript, Tailwind, ESLint)
-2. **Decision Fatigue**: Pre-made choices for tooling and patterns
-3. **AI Context**: Memory bank provides persistent context for AI assistants
-4. **Extensibility**: Recipe system for adding common features
-5. **Consistency**: Standardized project structure and conventions
+1. **Lead Quality**: Explicit qualification section filters out retail/small buyers
+2. **Standardization**: Company info, process, and capabilities shown once — no repetition
+3. **Conversion**: WhatsApp-first approach reduces friction for B2B buyers
+4. **Credibility**: Professional web presence since 1998, structured data for SEO
+5. **Efficiency**: Pre-filled messages contain structured info (company, product, quantity)
 
-## How It Should Work (User Flow)
+## User Flow
 
-1. User starts with this template
-2. User describes what they want to build to AI assistant
-3. AI adds pages, components, and features as needed
-4. AI uses recipes for common additions (database, auth)
-5. User previews changes via hot reload
-6. Iterate until satisfied
-7. Deploy
+1. Visitor lands on Home → sees positioning + qualification filter
+2. Good fit → explores Capabilities → understands products and customization
+3. Reads Process → knows exactly how orders work
+4. Visits Contact → uses InquiryWidget to generate pre-filled WhatsApp/email message
+5. Sends message → LEGEND INDUSTRIES responds during business hours
 
-## Key User Experience Goals
+## Key UX Goals
 
-- **Zero to Feature Fast**: Get building immediately, no setup required
-- **AI-Friendly**: Memory bank and recipes make AI assistance effective
-- **Flexible Foundation**: Can become any type of application
-- **Best Practices Built-In**: TypeScript strict mode, ESLint, clean structure
+- **Filter first**: Homepage qualification section tells bad-fit visitors to leave
+- **No forms**: InquiryWidget generates pre-filled WhatsApp/email messages
+- **Mobile-first**: Thumb-friendly buttons, responsive across all devices
+- **Fast loading**: Static pages, minimal JS, no heavy assets
+- **Clear navigation**: Home → Capabilities → Process → Contact flow
 
-## What This Template Provides
+## Conversion Mechanism
 
-1. **Clean App Structure**: Single page ready for expansion
-2. **Type Safety**: Full TypeScript setup with strict mode
-3. **Modern Styling**: Tailwind CSS 4 ready to use
-4. **Code Quality**: ESLint configured
-5. **Extensibility**: Recipe system for common features
+The InquiryWidget collects:
+- Company name
+- Product category (dropdown)
+- Quantity range (dropdown)
+- Optional details
 
-## Integration Points
-
-- **Database**: Use add-database recipe for Drizzle + SQLite
-- **Styling**: Tailwind CSS pre-configured
-- **AI Assistance**: Memory bank for context persistence
+These generate a structured pre-filled message for WhatsApp or email. No server-side processing, no database, no forms to manage.

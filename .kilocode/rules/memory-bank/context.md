@@ -1,87 +1,76 @@
-# Active Context: Next.js Starter Template
+# Active Context: LEGEND INDUSTRIES Website
 
 ## Current State
 
-**Template Status**: ✅ Ready for development
+**Project Status**: ✅ Complete — All pages built, lint/typecheck/build passing
 
-The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. It's ready for AI-assisted expansion to build any type of application.
+The website for LEGEND INDUSTRIES (Hyderabad-based bag manufacturing since 1998) is fully built with 5 pages, custom design system, SEO optimization, and WhatsApp-first conversion flow.
 
 ## Recently Completed
 
-- [x] Base Next.js 16 setup with App Router
-- [x] TypeScript configuration with strict mode
-- [x] Tailwind CSS 4 integration
-- [x] ESLint configuration
-- [x] Memory bank documentation
-- [x] Recipe system for common features
+- [x] Custom design system (orange accent, Inter font, 8px grid)
+- [x] Responsive Header with mobile navigation
+- [x] Footer with contact info and quick links
+- [x] Home page — hero, qualification filter, capabilities overview, process preview, credibility, FAQ, CTA
+- [x] Capabilities page — 4 product categories, customization options, order types
+- [x] Process page — 5-step order flow with timeline expectations
+- [x] Company page — about, client types, why choose us, production/delivery
+- [x] Contact page — WhatsApp-first with InquiryWidget (pre-filled message generator)
+- [x] WhatsAppButton component (reusable)
+- [x] InquiryWidget component (form → pre-filled WhatsApp/email)
+- [x] SectionHeader component (reusable)
+- [x] Schema.org structured data (Organization, LocalBusiness, FAQPage)
+- [x] robots.txt and sitemap.xml
+- [x] Full SEO metadata with keywords
+- [x] TypeScript typecheck passing
+- [x] ESLint passing
+- [x] Production build successful
 
 ## Current Structure
 
 | File/Directory | Purpose | Status |
 |----------------|---------|--------|
-| `src/app/page.tsx` | Home page | ✅ Ready |
-| `src/app/layout.tsx` | Root layout | ✅ Ready |
-| `src/app/globals.css` | Global styles | ✅ Ready |
-| `.kilocode/` | AI context & recipes | ✅ Ready |
+| `src/app/page.tsx` | Home page | ✅ Complete |
+| `src/app/capabilities/page.tsx` | Capabilities page | ✅ Complete |
+| `src/app/process/page.tsx` | Process page | ✅ Complete |
+| `src/app/company/page.tsx` | Company page | ✅ Complete |
+| `src/app/contact/page.tsx` | Contact page | ✅ Complete |
+| `src/app/layout.tsx` | Root layout + metadata + schemas | ✅ Complete |
+| `src/app/globals.css` | Design system | ✅ Complete |
+| `src/components/layout/Header.tsx` | Site header + mobile nav | ✅ Complete |
+| `src/components/layout/Footer.tsx` | Site footer | ✅ Complete |
+| `src/components/ui/WhatsAppButton.tsx` | WhatsApp CTA button | ✅ Complete |
+| `src/components/ui/InquiryWidget.tsx` | Pre-filled message generator | ✅ Complete |
+| `src/components/ui/SectionHeader.tsx` | Reusable section header | ✅ Complete |
+| `public/robots.txt` | SEO robots | ✅ Complete |
+| `public/sitemap.xml` | SEO sitemap | ✅ Complete |
 
-## Current Focus
+## Key Design Decisions
 
-The template is ready. Next steps depend on user requirements:
+- **No forms** — WhatsApp/email pre-filled messages instead
+- **Lead filtering** — Qualification section on Home page explicitly states who the business is NOT for
+- **Minimal images** — Icons and typography-driven design
+- **Orange accent** — Controlled brand-500 (#c2410c) throughout
+- **Mobile-first** — Responsive with thumb-friendly buttons (min-h-12)
+- **Static pages** — All pages are Server Components, no client JS except Header toggle and InquiryWidget
 
-1. What type of application to build
-2. What features are needed
-3. Design/branding preferences
+## WhatsApp Integration
 
-## Quick Start Guide
+- Phone number placeholder: `919876543210` — **MUST be updated to real number**
+- InquiryWidget generates structured pre-filled messages with company, product, quantity, and details
+- WhatsAppButton component used across all CTAs
 
-### To add a new page:
+## Pending / Future
 
-Create a file at `src/app/[route]/page.tsx`:
-```tsx
-export default function NewPage() {
-  return <div>New page content</div>;
-}
-```
-
-### To add components:
-
-Create `src/components/` directory and add components:
-```tsx
-// src/components/ui/Button.tsx
-export function Button({ children }: { children: React.ReactNode }) {
-  return <button className="px-4 py-2 bg-blue-600 text-white rounded">{children}</button>;
-}
-```
-
-### To add a database:
-
-Follow `.kilocode/recipes/add-database.md`
-
-### To add API routes:
-
-Create `src/app/api/[route]/route.ts`:
-```tsx
-import { NextResponse } from "next/server";
-
-export async function GET() {
-  return NextResponse.json({ message: "Hello" });
-}
-```
-
-## Available Recipes
-
-| Recipe | File | Use Case |
-|--------|------|----------|
-| Add Database | `.kilocode/recipes/add-database.md` | Data persistence with Drizzle + SQLite |
-
-## Pending Improvements
-
-- [ ] Add more recipes (auth, email, etc.)
-- [ ] Add example components
-- [ ] Add testing setup recipe
+- [ ] Update WhatsApp phone number to real business number
+- [ ] Update email address if different from placeholder
+- [ ] Add blog/insights section for SEO content
+- [ ] Add actual product images if available
+- [ ] Consider adding Google Maps embed on Contact page
+- [ ] Set up deployment (Vercel recommended)
 
 ## Session History
 
 | Date | Changes |
 |------|---------|
-| Initial | Template created with base setup |
+| 2026-03-27 | Full website build — 5 pages, design system, SEO, WhatsApp integration |

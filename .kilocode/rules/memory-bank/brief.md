@@ -1,48 +1,66 @@
-# Project Brief: Next.js Starter Template
+# Project Brief: LEGEND INDUSTRIES Website
 
 ## Purpose
 
-This is a minimal Next.js starter template designed for AI-assisted development. It provides a clean foundation that can be extended to build any type of web application through interaction with an AI assistant.
+Corporate website for LEGEND INDUSTRIES, a Hyderabad-based bag manufacturing and corporate gifting business established in 1998. The website's primary goal is to filter bad leads and convert high-quality B2B buyers through a WhatsApp-first, no-forms conversion flow.
 
 ## Target Users
 
-- Developers wanting a clean Next.js starting point
-- Users building applications through AI-assisted coding
-- Teams needing a standardized, modern Next.js setup
+- Corporate companies (employee kits, promotions)
+- Distributors and wholesalers
+- Institutions and organizations
+- Event and marketing agencies
 
-## Core Use Case
+## Core Business
 
-Users describe what they want to build to an AI assistant, which then expands this template by:
-
-1. Adding components and pages as needed
-2. Installing additional dependencies
-3. Setting up databases, authentication, etc. using recipes
-4. Customizing styling and branding
+- Custom bag manufacturing (travel, duffle, laptop, school)
+- Jute & cotton eco bags
+- Corporate gifting items
+- Utility products (water bottles, etc.)
+- Bulk orders only (100+ units, typically ₹40k+ orders)
+- PAN India supply from Hyderabad
 
 ## Key Requirements
 
 ### Must Have
 
-- Modern Next.js 16 setup with App Router
-- TypeScript for type safety
-- Tailwind CSS 4 for styling
-- ESLint for code quality
-- Clean, minimal starting structure
-- Bun as package manager
+- Filter bad/small/irrelevant leads
+- WhatsApp-first conversion (no traditional forms)
+- Pre-filled message generation
+- Mobile-first responsive design
+- Fast loading, minimal JS
+- SEO optimized (structured data, meta tags, sitemap)
 
-### Nice to Have
+### Design Philosophy
 
-- Recipe system for common additions (database, auth)
-- Memory bank for AI context persistence
-- Clear development guidelines
+- Minimal UI, almost no images
+- Controlled orange accent (#c2410c)
+- Strong typography hierarchy (Inter font)
+- 8px grid spacing system
+- Max-width container for readability
 
-## Success Metrics
+### Technical
 
-- Clean, zero-error TypeScript setup
-- Passing lint and type checks
+- Next.js 16 with App Router
+- TypeScript strict mode
+- Tailwind CSS 4
+- All Server Components except interactive elements
+- Schema.org structured data (Organization, LocalBusiness, FAQPage)
+- robots.txt + sitemap.xml
+
+## Website Structure
+
+| Page | Purpose |
+|------|---------|
+| Home | Positioning + filtering + overview |
+| Capabilities | Products + customization details |
+| Process | How orders work (5-step flow) |
+| Company | Credibility + about |
+| Contact | Controlled conversion (WhatsApp-first) |
 
 ## Constraints
 
-- Minimal dependencies by default
-- Framework: Next.js 16 + React 19 + Tailwind CSS 4
-- Package manager: Bun
+- WhatsApp number is placeholder (919876543210) — needs real number
+- Email is placeholder (info@legendindustries.in)
+- No actual product images (icon-driven design)
+- No blog/content section yet (future addition)
