@@ -60,7 +60,7 @@ Corporate website for LEGEND INDUSTRIES, a Hyderabad-based bag manufacturing and
 
 ## Constraints
 
-- WhatsApp number is placeholder (919876543210) — needs real number
-- Email is placeholder (info@legendindustries.in)
+- WhatsApp number is placeholder (919052088880) — needs real number
+- Email is placeholder (legendindustries92@gmail.com)
 - No actual product images (icon-driven design)
 - No blog/content section yet (future addition)

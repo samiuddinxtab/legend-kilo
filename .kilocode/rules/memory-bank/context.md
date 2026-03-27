@@ -67,9 +67,9 @@ The website for LEGEND INDUSTRIES has been migrated from Next.js to Astro. All 5
 
 ## WhatsApp Integration
 
-- Phone number placeholder: `919876543210` — **MUST be updated to real number**
-- Email placeholder: `info@legendindustries.in`
-- Phone placeholder: `+91 98765 43210`
+- WhatsApp number: `919052088880` (updated to production number)
+- Email: `legendindustries92@gmail.com` (updated to production inbox)
+- Phone: `+91 90520 88880` (updated to production line)
 - All centralized in `src/data/site.ts` — single file to update
 
 ## Migration Notes
@@ -85,7 +85,7 @@ The website for LEGEND INDUSTRIES has been migrated from Next.js to Astro. All 5
 - [x] Run `bun install` to install Astro dependencies
 - [x] Run `bun run build` to verify build
 - [ ] Run `bun run dev` to test in browser
-- [ ] Update WhatsApp phone number to real business number
+- [x] Update WhatsApp phone number to real business number
 - [ ] Deploy to Vercel or preferred hosting
 
 ## Session History
@@ -95,3 +95,4 @@ The website for LEGEND INDUSTRIES has been migrated from Next.js to Astro. All 5
 | 2026-03-28 | Full Next.js → Astro migration with zero functional deviation |
 | 2026-03-28 | Fixed build issues: Tailwind CSS v4 config, Icons component rewrite |
 | 2026-03-27 | Reimagined Capabilities page with stronger visual hierarchy, expanded category presentation, and richer product range content across data lists |
+| 2026-03-27 | Updated production contact info, rebuilt blog as image-free SEO library (12 posts), improved inquiry qualification/CTA, and added performance headers/font loading improvements |
