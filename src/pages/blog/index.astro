@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import Icon from '../../components/Icons.astro';
+import { BLOG_ARTICLES } from '../../data/site';
+
+const title = "Blog | LEGEND INDUSTRIES";
+const description = "Insights and guides on bulk bag manufacturing, corporate gifting best practices, and industry trends from LEGEND INDUSTRIES Hyderabad.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+
+  <main id="main-content">
+    <section aria-labelledby="blog-hero" class="bg-neutral-900 text-white">
+      <div class="container-site section-padding">
+        <span class="inline-block text-sm font-semibold tracking-widest uppercase text-brand-400 mb-4">
+          Insights & Resources
+        </span>
+        <h1 id="blog-hero" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">
+          Latest <span class="text-brand-400">Articles</span>
+        </h1>
+        <p class="text-lg text-neutral-300 leading-relaxed max-w-2xl">
+          Expert insights on bulk bag manufacturing, corporate gifting strategies, and industry best practices from 25+ years of experience.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="articles-heading" class="section-padding">
+      <div class="container-site">
+        <h2 id="articles-heading" class="sr-only">Blog Articles</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {BLOG_ARTICLES.map((article) => (
+            <article class="card hover:shadow-lg transition-shadow duration-300">
+              <div class="aspect-video bg-neutral-100 rounded-lg mb-4 flex items-center justify-center">
+                <Icon name="fileText" class="text-neutral-300" size={48} />
+              </div>
+              <time class="text-xs text-neutral-500 uppercase tracking-wider">
+                {new Date(article.datePublished).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </time>
+              <h3 class="text-lg font-bold text-neutral-900 mt-2 mb-2">
+                <a href={`/blog/${article.slug}`} class="hover:text-brand-500 transition-colors">
+                  {article.title}
+                </a>
+              </h3>
+              <p class="text-sm text-neutral-600 leading-relaxed mb-4">
+                {article.description}
+              </p>
+              <a href={`/blog/${article.slug}`} class="text-sm font-semibold text-brand-500 hover:text-brand-600 inline-flex items-center gap-1">
+                Read More <Icon name="arrowRight" size={14} />
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-neutral-100">
+      <div class="container-site text-center">
+        <h2 class="text-2xl font-bold text-neutral-900 mb-4">Need Custom Manufacturing Guidance?</h2>
+        <p class="text-neutral-600 mb-6 max-w-xl mx-auto">
+          Our team has decades of experience in bulk bag manufacturing. Contact us for personalized recommendations.
+        </p>
+        <WhatsAppButton
+          message="Hi, I'm interested in learning more about bulk bag manufacturing for our corporate needs."
+          label="Get Expert Advice"
+          size="lg"
+        />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

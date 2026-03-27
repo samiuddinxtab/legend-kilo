@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Icon from '../components/Icons.astro';
+---
+
+<BaseLayout 
+  title="404 - Page Not Found | LEGEND INDUSTRIES"
+  description="The page you're looking for doesn't exist. Browse our capabilities or contact us for bulk bag manufacturing inquiries."
+>
+  <Header />
+
+  <main id="main-content">
+    <section class="section-padding min-h-[60vh] flex items-center">
+      <div class="container-site text-center">
+        <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 mb-8">
+          <Icon name="alertCircle" class="text-neutral-400" size={48} />
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-4">
+          404
+        </h1>
+        
+        <h2 class="text-xl sm:text-2xl font-semibold text-neutral-700 mb-4">
+          Page Not Found
+        </h2>
+        
+        <p class="text-neutral-600 max-w-md mx-auto mb-8">
+          The page you're looking for doesn't exist or has been moved. 
+          Explore our capabilities or get in touch for bulk manufacturing inquiries.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="btn-primary">
+            <Icon name="home" />
+            Go to Home
+          </a>
+          <a href="/capabilities" class="btn-outline">
+            View Capabilities
+            <Icon name="arrowRight" />
+          </a>
+        </div>
+        
+        <div class="mt-16 grid sm:grid-cols-3 gap-8 max-w-2xl mx-auto text-left">
+          <div>
+            <h3 class="font-semibold text-neutral-900 mb-2">Quick Links</h3>
+            <ul class="space-y-2 text-sm text-neutral-600">
+              <li><a href="/capabilities" class="hover:text-brand-500">Capabilities</a></li>
+              <li><a href="/process" class="hover:text-brand-500">Process</a></li>
+              <li><a href="/company" class="hover:text-brand-500">Company</a></li>
+              <li><a href="/contact" class="hover:text-brand-500">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-neutral-900 mb-2">Products</h3>
+            <ul class="space-y-2 text-sm text-neutral-600">
+              <li><a href="/capabilities#bags" class="hover:text-brand-500">Custom Bags</a></li>
+              <li><a href="/capabilities#eco" class="hover:text-brand-500">Eco Bags</a></li>
+              <li><a href="/capabilities#corporate" class="hover:text-brand-500">Corporate Gifts</a></li>
+              <li><a href="/capabilities#utility" class="hover:text-brand-500">Utility Products</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-neutral-900 mb-2">Contact Us</h3>
+            <ul class="space-y-2 text-sm text-neutral-600">
+              <li>WhatsApp: Quick Inquiry</li>
+              <li>Email: info@legendindustries.in</li>
+              <li>Phone: +91 98765 43210</li>
+              <li>Hyderabad, Telangana</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -105,8 +105,86 @@ const faqSchema = {
         text: "Yes, customization is our core strength. We offer logo printing, custom sizes, material selection, color combinations, and custom packaging for bulk orders.",
       },
     },
+    {
+      "@type": "Question",
+      name: "What materials do you use for bag manufacturing?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We work with a variety of materials including canvas, nylon, polyester, jute, cotton, and leatherette. Material selection depends on your requirements, budget, and intended use case.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you provide samples before bulk production?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, we provide design mockups and samples for custom orders. Sample approval is required before production begins to ensure the final product meets your expectations.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is your pricing structure?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Pricing depends on product type, quantity, materials, and customization requirements. We offer competitive pricing for bulk orders. Share your requirements for a detailed quote.",
+      },
+    },
   ],
 };
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Custom Bags & Corporate Gifts",
+  description: "Bulk manufacturing of custom bags including travel, duffle, laptop, school bags, and corporate gifting items with custom branding.",
+  brand: {
+    "@type": "Brand",
+    name: "LEGEND INDUSTRIES",
+  },
+  manufacturer: {
+    "@type": "Organization",
+    name: "LEGEND INDUSTRIES",
+  },
+  category: "Bag Manufacturing & Corporate Gifting",
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "INR",
+    availability: "https://schema.org/InStock",
+    url: "https://legendindustries.in/capabilities",
+  },
+};
+
+function getBreadcrumbSchema(urlPath: string) {
+  const pathParts = urlPath.split('/').filter(Boolean);
+  const items = [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://legendindustries.in/",
+    },
+  ];
+  
+  let currentPath = '';
+  pathParts.forEach((part, index) => {
+    currentPath += `/${part}`;
+    items.push({
+      "@type": "ListItem",
+      position: index + 2,
+      name: part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
+      item: `https://legendindustries.in${currentPath}`,
+    });
+  });
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items,
+  };
+}
+
+const currentPath = Astro.url.pathname;
+const breadcrumbSchema = getBreadcrumbSchema(currentPath);
 ---
 
 <!DOCTYPE html>
@@ -131,6 +209,12 @@ const faqSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:site" content="@legendindustries" />
+    
     <!-- Google Bot -->
     <meta name="googlebot" content="index, follow" />
     <meta name="googlebot" content="max-video-preview:-1" />
@@ -140,7 +224,9 @@ const faqSchema = {
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   </head>
   <body class="font-sans antialiased">
     <slot />

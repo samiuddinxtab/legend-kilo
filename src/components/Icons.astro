@@ -1,6 +1,6 @@
 ---
 interface Props {
-  name: 'arrowRight' | 'checkCircle' | 'check' | 'xCircle' | 'whatsapp' | 'mail' | 'phone' | 'mapPin' | 'clock' | 'star' | 'chevronDown' | 'menu' | 'close' | 'factory' | 'truck' | 'shield' | 'palette' | 'leaf' | 'gift' | 'droplet' | 'paintbrush' | 'backpack' | 'messageCircle' | 'search' | 'checkSquare' | 'cog';
+  name: 'arrowRight' | 'checkCircle' | 'check' | 'xCircle' | 'whatsapp' | 'mail' | 'phone' | 'mapPin' | 'clock' | 'star' | 'chevronDown' | 'menu' | 'close' | 'factory' | 'truck' | 'shield' | 'palette' | 'leaf' | 'gift' | 'droplet' | 'paintbrush' | 'backpack' | 'messageCircle' | 'search' | 'checkSquare' | 'cog' | 'fileText' | 'user' | 'alertCircle' | 'home';
   class?: string;
   size?: number;
 }
@@ -167,5 +167,29 @@ const finalSize = size || defaultSize;
 {name === 'cog' && (
   <svg class={className} width={finalSize} height={finalSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
     <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" /><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" /><path d="M12 2v2" /><path d="M12 22v-2" /><path d="m17 7 1.5-1.5" /><path d="M5.5 18.5 7 17" /><path d="m17 17 1.5 1.5" /><path d="M5.5 5.5 7 7" /><path d="M2 12h2" /><path d="M20 12h2" />
+  </svg>
+)}
+
+{name === 'fileText' && (
+  <svg class={className} width={finalSize} height={finalSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14,2 14,8 20,8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><line x1="10" y1="9" x2="8" y2="9" />
+  </svg>
+)}
+
+{name === 'user' && (
+  <svg class={className} width={finalSize} height={finalSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+  </svg>
+)}
+
+{name === 'alertCircle' && (
+  <svg class={className} width={finalSize} height={finalSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+  </svg>
+)}
+
+{name === 'home' && (
+  <svg class={className} width={finalSize} height={finalSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9,22 9,12 15,12 15,22" />
   </svg>
 )}
