@@ -18,7 +18,7 @@ describe("WhatsAppButton", () => {
   it("generates correct WhatsApp URL", () => {
     render(<WhatsAppButton message="Test message" />);
     const link = screen.getByRole("link");
-    expect(link).toHaveAttribute("href", expect.stringContaining("wa.me/919876543210"));
+    expect(link).toHaveAttribute("href", expect.stringContaining("wa.me/919052088880"));
     expect(link).toHaveAttribute("href", expect.stringContaining(encodeURIComponent("Test message")));
   });
 
@@ -45,13 +45,13 @@ describe("WhatsAppButton", () => {
 describe("links utility", () => {
   it("getWhatsAppHref encodes message", () => {
     const href = getWhatsAppHref("Hello World");
-    expect(href).toContain("wa.me/919876543210");
+    expect(href).toContain("wa.me/919052088880");
     expect(href).toContain("Hello%20World");
   });
 
   it("getEmailHref generates mailto link", () => {
     const href = getEmailHref("Test Subject", "Test Body");
-    expect(href).toContain("mailto:info@legendindustries.in");
+    expect(href).toContain("mailto:legendindustries92@gmail.com");
     expect(href).toContain("Test%20Subject");
     expect(href).toContain("Test%20Body");
   });
