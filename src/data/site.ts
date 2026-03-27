@@ -1,3 +1,5 @@
+import blogArticles from './blog-articles.json';
+
 /**
  * Centralized data layer for site content.
  * Keeps page components lean and content easily maintainable.
@@ -26,10 +28,10 @@ export const PRODUCT_LINKS = [
   { href: "/capabilities#utility", label: "Utility Products" },
 ] as const;
 
-export const WHATSAPP_NUMBER = "919876543210";
-export const EMAIL_ADDRESS = "info@legendindustries.in";
-export const PHONE_NUMBER = "+91 98765 43210";
-export const PHONE_TEL = "+919876543210";
+export const WHATSAPP_NUMBER = "919052088880";
+export const EMAIL_ADDRESS = "legendindustries92@gmail.com";
+export const PHONE_NUMBER = "+91 90520 88880";
+export const PHONE_TEL = "+919052088880";
 
 export const SITE_URL = "https://legendindustries.in";
 
@@ -57,11 +59,11 @@ export const CAPABILITIES = [
 ] as const;
 
 export const QUALIFICATION_POINTS = [
-  "You need bulk quantities (100+ units)",
+  "You need B2B quantities (typically 100+ units)",
   "You require custom branding or design",
   "You represent a company, institution, or distributor",
   "You need reliable, repeat supply",
-  "Your budget aligns with custom manufacturing (typically ₹40k+ orders)",
+  "Your budget aligns with custom manufacturing (typically ₹50k+ project value)",
 ] as const;
 
 export const NOT_A_FIT = [
@@ -180,11 +182,11 @@ export const PRODUCT_OPTIONS = [
 ] as const;
 
 export const QUANTITY_OPTIONS = [
-  "100–500 units",
-  "500–1,000 units",
+  "100–300 units (starter B2B)",
+  "300–1,000 units",
   "1,000–5,000 units",
   "5,000+ units",
-  "Not sure yet",
+  "Need MOQ guidance",
 ] as const;
 
 export const BAG_TYPES = [
@@ -194,6 +196,10 @@ export const BAG_TYPES = [
   "School bags",
   "Drawstring bags",
   "Promotional bags",
+  "Gym bags",
+  "Sling and messenger bags",
+  "Conference and event bags",
+  "Retail packaging bags",
 ] as const;
 
 export const ECO_TYPES = [
@@ -201,6 +207,8 @@ export const ECO_TYPES = [
   "Cotton tote bags",
   "Eco-friendly promotional bags",
   "Reusable shopping bags",
+  "Organic cotton drawstring bags",
+  "Bottle carry and produce bags",
 ] as const;
 
 export const CORPORATE_TYPES = [
@@ -208,12 +216,17 @@ export const CORPORATE_TYPES = [
   "Corporate kits",
   "Promotional combinations",
   "Employee onboarding kits",
+  "Executive gifting sets",
+  "Event giveaway packs",
 ] as const;
 
 export const UTILITY_TYPES = [
   "Water bottles",
   "Daily-use branded items",
   "Combo gift sets",
+  "Lunch and storage accessories",
+  "Desk essentials",
+  "Travel utility kits",
 ] as const;
 
 export const CUSTOMIZATION_OPTIONS = [
@@ -269,67 +282,4 @@ export const WHY_CHOOSE = [
   "Structured quality checks before dispatch",
 ] as const;
 
-export const BLOG_ARTICLES = [
-  {
-    slug: "choosing-right-bag-material-corporate-gifting",
-    title: "Choosing the Right Bag Material for Corporate Gifting",
-    description: "A comprehensive guide to selecting the perfect material for your corporate gift bags — from canvas to jute, we break down the pros and cons of each option.",
-    content: `When it comes to corporate gifting, the material you choose speaks volumes about your brand. Here's our expert guide to selecting the right bag material for your business needs.
-
-Canvas bags offer durability and a professional look, making them ideal for corporate employee kits and long-term brand visibility. They're cost-effective for bulk orders and can withstand repeated use.
-
-Jute and cotton eco-friendly materials resonate with organizations prioritizing sustainability. These materials appeal to environmentally conscious clients and demonstrate your brand's commitment to responsible business practices.
-
-Nylon and polyester are lightweight options perfect for promotional events and conferences. They offer vibrant color printing capabilities and quick drying properties.
-
-Leatherette provides a premium feel for high-end corporate gifts, though at a higher price point. It's perfect for executive gifts andVIP client presentations.`,
-    datePublished: "2026-03-15",
-    author: "LEGEND INDUSTRIES Team",
-    image: "/blog/bag-materials.jpg",
-  },
-  {
-    slug: "bulk-order-timeline-expectations",
-    title: "What to Expect: Bulk Order Timeline Breakdown",
-    description: "Understanding the production timeline for bulk bag orders helps you plan better. Learn the typical stages from requirement to delivery.",
-    content: `Planning a bulk order? Understanding the timeline helps ensure smooth execution and on-time delivery.
-
-Stage 1: Requirement Gathering (1-2 days)
-We discuss your product specifications, quantity, branding requirements, and timeline. The more details you provide upfront, the faster we can move forward.
-
-Stage 2: Quote & Discussion (1-2 days)
-Based on your requirements, we provide a detailed quote including material options, pricing, and production timeline. This is where we align expectations.
-
-Stage 3: Sample/Design Approval (3-5 days)
-For custom orders, we create design mockups or physical samples. Your approval on this stage locks in final specifications.
-
-Stage 4: Production (1-2 weeks)
-Actual production time depends on order size and customization complexity. We maintain quality checks at every stage.
-
-Stage 5: Quality & Dispatch (1-2 days)
-Final quality inspection, packaging, and dispatch. Delivery across India takes additional 3-7 days depending on location.`,
-    datePublished: "2026-03-10",
-    author: "LEGEND INDUSTRIES Team",
-    image: "/blog/production-timeline.jpg",
-  },
-  {
-    slug: "maximizing-roi-corporate-merchandise",
-    title: "Maximizing ROI on Corporate Merchandise",
-    description: "Strategic insights on getting the most value from your corporate merchandise budget while building lasting brand impressions.",
-    content: `Corporate merchandise is an investment in brand visibility. Here's how to maximize your return on investment.
-
-Quantity vs. Quality Balance
-For maximum reach, balance quantity with quality. A well-made bag used repeatedly provides more brand exposure than cheap items discarded after one use.
-
-Customization That Stands Out
-Invest in customization that makes your brand memorable. Quality printing, thoughtful design, and durable materials ensure your merchandise gets used and seen.
-
-Strategic Distribution
-Focus on high-impact distribution: employee welcome kits, client gifts, event giveaways, and dealer/distributor support. Each touchpoint reinforces brand recognition.
-
-Long-term Relationships
-Building lasting supplier relationships leads to better pricing, priority production, and consistent quality across orders. This partnership approach maximizes value over time.`,
-    datePublished: "2026-03-05",
-    author: "LEGEND INDUSTRIES Team",
-    image: "/blog/corporate-roi.jpg",
-  },
-] as const;
+export const BLOG_ARTICLES = blogArticles;

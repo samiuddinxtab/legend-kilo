@@ -8,7 +8,7 @@ import Icon from '../../components/Icons.astro';
 import { BLOG_ARTICLES } from '../../data/site';
 
 const title = "Blog | LEGEND INDUSTRIES";
-const description = "Insights and guides on bulk bag manufacturing, corporate gifting best practices, and industry trends from LEGEND INDUSTRIES Hyderabad.";
+const description = "B2B insights on bulk bag suppliers in Hyderabad, custom corporate gifting in India, and MOQ planning for bag manufacturing.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -17,41 +17,61 @@ const description = "Insights and guides on bulk bag manufacturing, corporate gi
   <main id="main-content">
     <section aria-labelledby="blog-hero" class="bg-neutral-900 text-white">
       <div class="container-site section-padding">
-        <span class="inline-block text-sm font-semibold tracking-widest uppercase text-brand-400 mb-4">
-          Insights & Resources
-        </span>
+        <span class="inline-block text-sm font-semibold tracking-widest uppercase text-brand-400 mb-4">Insights & Resources</span>
         <h1 id="blog-hero" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">
-          Latest <span class="text-brand-400">Articles</span>
+          Practical B2B <span class="text-brand-400">Buying Guides</span>
         </h1>
-        <p class="text-lg text-neutral-300 leading-relaxed max-w-2xl">
-          Expert insights on bulk bag manufacturing, corporate gifting strategies, and industry best practices from 25+ years of experience.
+        <p class="text-lg text-neutral-300 leading-relaxed max-w-3xl mb-8">
+          No stock photos, no fluff. Just procurement-focused content for teams evaluating bulk bag suppliers in Hyderabad,
+          custom corporate gifting partners in India, and MOQ-led manufacturing decisions.
         </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#articles-heading" class="btn-primary">
+            Browse Articles <Icon name="arrowRight" />
+          </a>
+          <WhatsAppButton
+            message="Hi, we need guidance for a bulk bag / corporate gifting requirement. Please help us shortlist the right category and MOQ."
+            label="Talk to an Expert"
+          />
+        </div>
       </div>
     </section>
 
     <section aria-labelledby="articles-heading" class="section-padding">
       <div class="container-site">
+        <SectionHeader
+          label="SEO Knowledge Hub"
+          title="Latest Manufacturing & Gifting Articles"
+          description="This library is editable from one data source and intentionally image-free for speed, clarity, and production readiness."
+        />
+
         <h2 id="articles-heading" class="sr-only">Blog Articles</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {BLOG_ARTICLES.map((article) => (
-            <article class="card hover:shadow-lg transition-shadow duration-300">
-              <div class="aspect-video bg-neutral-100 rounded-lg mb-4 flex items-center justify-center">
-                <Icon name="fileText" class="text-neutral-300" size={48} />
+            <article class="card h-full flex flex-col">
+              <div class="flex items-center justify-between gap-3 mb-3">
+                <time class="text-xs text-neutral-500 uppercase tracking-wider">
+                  {new Date(article.datePublished).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
+                </time>
+                <span class="text-[11px] uppercase tracking-[0.14em] text-brand-600 font-semibold">B2B</span>
               </div>
-              <time class="text-xs text-neutral-500 uppercase tracking-wider">
-                {new Date(article.datePublished).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
-              </time>
-              <h3 class="text-lg font-bold text-neutral-900 mt-2 mb-2">
-                <a href={`/blog/${article.slug}`} class="hover:text-brand-500 transition-colors">
-                  {article.title}
-                </a>
+
+              <h3 class="text-lg font-bold text-neutral-900 mb-2">
+                <a href={`/blog/${article.slug}`} class="hover:text-brand-500 transition-colors">{article.title}</a>
               </h3>
-              <p class="text-sm text-neutral-600 leading-relaxed mb-4">
-                {article.description}
-              </p>
-              <a href={`/blog/${article.slug}`} class="text-sm font-semibold text-brand-500 hover:text-brand-600 inline-flex items-center gap-1">
-                Read More <Icon name="arrowRight" size={14} />
-              </a>
+
+              <p class="text-sm text-neutral-600 leading-relaxed mb-4">{article.description}</p>
+
+              <div class="mt-auto">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {article.keywords.slice(0, 2).map((keyword) => (
+                    <span class="text-xs px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600">{keyword}</span>
+                  ))}
+                </div>
+                <a href={`/blog/${article.slug}`} class="text-sm font-semibold text-brand-500 hover:text-brand-600 inline-flex items-center gap-1">
+                  Read Full Article <Icon name="arrowRight" size={14} />
+                </a>
+              </div>
             </article>
           ))}
         </div>
@@ -59,16 +79,19 @@ const description = "Insights and guides on bulk bag manufacturing, corporate gi
     </section>
 
     <section class="section-padding bg-neutral-100">
-      <div class="container-site text-center">
-        <h2 class="text-2xl font-bold text-neutral-900 mb-4">Need Custom Manufacturing Guidance?</h2>
-        <p class="text-neutral-600 mb-6 max-w-xl mx-auto">
-          Our team has decades of experience in bulk bag manufacturing. Contact us for personalized recommendations.
-        </p>
-        <WhatsAppButton
-          message="Hi, I'm interested in learning more about bulk bag manufacturing for our corporate needs."
-          label="Get Expert Advice"
-          size="lg"
-        />
+      <div class="container-site">
+        <div class="card bg-white text-center max-w-3xl mx-auto">
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] text-brand-600 mb-2">Need tailored recommendations?</p>
+          <h2 class="text-2xl font-bold text-neutral-900 mb-3">Get Category + MOQ Guidance in One Call</h2>
+          <p class="text-neutral-600 mb-6">
+            Share your use case and target quantity. We&apos;ll recommend the right product mix, customization route, and realistic timeline.
+          </p>
+          <WhatsAppButton
+            message="Hi, we need B2B guidance for category selection, MOQ, and timeline."
+            label="Start on WhatsApp"
+            size="lg"
+          />
+        </div>
       </div>
     </section>
   </main>
