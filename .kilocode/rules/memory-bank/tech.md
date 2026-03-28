@@ -2,89 +2,50 @@
 
 ## Technology Stack
 
-| Technology   | Version | Purpose                         |
-| ------------ | ------- | ------------------------------- |
-| Next.js      | 16.x    | React framework with App Router |
-| React        | 19.x    | UI library                      |
-| TypeScript   | 5.9.x   | Type-safe JavaScript            |
-| Tailwind CSS | 4.x     | Utility-first CSS               |
-| Bun          | Latest  | Package manager & runtime       |
+| Technology   | Version | Purpose |
+| ------------ | ------- | ------- |
+| Astro        | 5.x     | Static site framework |
+| TypeScript   | 5.9.x   | Type-safe JavaScript |
+| Tailwind CSS | 4.x     | Utility-first styling |
+| Vitest       | 4.x     | Unit testing |
+| Node/npm     | Current | Package manager/runtime |
 
 ## Development Commands
 
 ```bash
-bun install        # Install dependencies
-bun dev            # Start dev server (http://localhost:3000)
-bun run build      # Production build
-bun start          # Start production server
-bun lint           # Run ESLint
-bun typecheck      # Run TypeScript type checking
+npm install         # Install dependencies
+npm run dev         # Start Astro dev server
+npm run build       # Production static build
+npm run preview     # Preview production build
+npm run typecheck   # TypeScript type checking
+npm run test        # Run tests
+npm run lint        # Run ESLint
 ```
-
-## Build Status
-
-- ✅ TypeScript: No errors
-- ✅ ESLint: No warnings
-- ✅ Build: All 6 routes statically generated
 
 ## Project Configuration
 
-### Next.js Config (`next.config.ts`)
-- Default settings, App Router enabled
-
-### TypeScript Config (`tsconfig.json`)
-- Strict mode enabled
+### TypeScript (`tsconfig.json`)
+- Extends `astro/tsconfigs/strict`
 - Path alias: `@/*` → `src/*`
+- No React JSX configuration
 
-### Tailwind CSS 4 (`globals.css`)
-- CSS-first configuration with `@theme`
-- Brand colors: orange accent (#c2410c)
-- Custom component classes
-- Inter font via next/font/google
+### Testing (`vitest.config.ts`)
+- Node test environment
+- Test include pattern: `src/**/*.{test,spec}.ts`
+- Coverage focused on `src/data` and `src/utils`
 
-## Key Dependencies
+### Linting (`eslint.config.mjs`)
+- Flat ESLint config
+- Ignore paths: `node_modules/**`, `dist/**`, `.astro/**`
 
-### Production
-- `next` ^16.1.3
-- `react` ^19.2.3
-- `react-dom` ^19.2.3
+## Deployment Configuration
 
-### Dev
-- `typescript` ^5.9.3
-- `tailwindcss` ^4.1.17
-- `@tailwindcss/postcss` ^4.1.17
-- `eslint` ^9.39.1
-- `eslint-config-next` ^16.0.0
+- Cloudflare-compatible headers file: `public/_headers`
+- No `vercel.json` in repository
+- Static build output directory: `dist/` (ignored in git)
 
-## SEO Implementation
+## Build Status (as of 2026-03-28)
 
-### Schema.org JSON-LD (in layout.tsx)
-- Organization schema
-- LocalBusiness schema (Hyderabad, geo coordinates)
-- FAQPage schema (5 FAQs)
-
-### Metadata
-- Page-level metadata exports on all pages
-- Keywords, OpenGraph, robots configuration
-- Canonical URLs via alternates
-
-### Files
-- `public/robots.txt` — allow all, link to sitemap
-- `public/sitemap.xml` — 5 URLs with priorities
-
-## Placeholder Values (Need Updating)
-
-| Item | Current Value | Action Needed |
-|------|---------------|---------------|
-| WhatsApp Number | 919052088880 | ✅ Updated to production number |
-| Email | legendindustries92@gmail.com | ✅ Updated to production inbox |
-| Phone | +91 90520 88880 | ✅ Updated to production line |
-| Domain | legendindustries.in | Confirm domain |
-
-## Performance
-
-- All pages are static (○ prerendered)
-- Only 2 client components (Header toggle, InquiryWidget)
-- No external API calls
-- Minimal JavaScript bundle
-- Inter font with `display: swap`
+- ⚠️ `npm run typecheck` blocked in this environment (registry access returned HTTP 403 during install)
+- ⚠️ `npm run test` blocked in this environment (tooling unavailable without install)
+- ⚠️ `npm run build` blocked in this environment (tooling unavailable without install)

@@ -2,98 +2,41 @@
 
 ## Current State
 
-**Project Status**: ✅ Migrated to Astro — Full Next.js to Astro migration complete with zero functional deviation
+**Project Status**: ✅ Astro static site cleanup complete after migration stabilization.
 
-The website for LEGEND INDUSTRIES has been migrated from Next.js to Astro. All 5 pages preserved, WhatsApp-first flow intact, SEO/JSON-LD schemas maintained, Tailwind CSS system unchanged.
+The repository has been cleaned of leftover Next.js/React artifacts. The Astro + TypeScript + Tailwind stack is now consistent, and deployment config is Cloudflare-only.
 
-## Recently Completed
+## Recently Completed (2026-03-28)
 
-### Migration (Next.js → Astro)
-- [x] Migrated to Astro v5 with @astrojs/tailwind integration
-- [x] Preserved exact route structure (Home, Capabilities, Process, Company, Contact)
-- [x] Converted all React components to Astro components
-- [x] Maintained Tailwind CSS v4 design system (no changes)
-- [x] Preserved JSON-LD schemas (Organization, LocalBusiness, FAQPage)
-- [x] Maintained all SEO metadata (Open Graph, canonical, robots)
-- [x] WhatsApp-first flow preserved with pre-filled message generation
-- [x] InquiryWidget now uses client:visible directive for hydration
-- [x] Header mobile menu uses vanilla JS (no React hydration needed)
-- [x] All WCAG accessibility features preserved (skip link, ARIA, semantic HTML)
-
-### Architecture Changes
-
-| Before (Next.js) | After (Astro) |
-|------------------|---------------|
-| `src/app/layout.tsx` | `src/layouts/BaseLayout.astro` |
-| `src/app/page.tsx` | `src/pages/index.astro` |
-| `src/components/layout/Header.tsx` | `src/components/Header.astro` (vanilla JS) |
-| `src/components/layout/Footer.tsx` | `src/components/Footer.astro` |
-| `src/components/ui/WhatsAppButton.tsx` | `src/components/WhatsAppButton.astro` |
-| `src/components/ui/InquiryWidget.tsx` | `src/components/InquiryWidget.astro` (client:visible) |
-| `src/components/icons/index.tsx` | `src/components/Icons.astro` (name prop API) |
-| `src/lib/links.ts` | `src/utils/links.ts` |
-| `src/data/site.ts` | `src/data/site.ts` (unchanged) |
-
-## Current Structure
-
-| File/Directory | Purpose | Status |
-|----------------|---------|--------|
-| `src/pages/index.astro` | Home page | ✅ Migrated |
-| `src/pages/capabilities.astro` | Capabilities page | ✅ Migrated |
-| `src/pages/process.astro` | Process page | ✅ Migrated |
-| `src/pages/company.astro` | Company page | ✅ Migrated |
-| `src/pages/contact.astro` | Contact page | ✅ Migrated |
-| `src/layouts/BaseLayout.astro` | Root layout + schemas | ✅ Migrated |
-| `src/styles/global.css` | Tailwind design system | ✅ Preserved |
-| `src/components/Icons.astro` | 25+ centralized SVG icons | ✅ Fixed (name prop API) |
-| `src/components/Header.astro` | Header + mobile nav | ✅ Converted |
-| `src/components/Footer.astro` | Semantic footer | ✅ Converted |
-| `src/components/WhatsAppButton.astro` | WhatsApp CTA | ✅ Converted |
-| `src/components/InquiryWidget.astro` | Inquiry form (client:visible) | ✅ Converted |
-| `src/components/SectionHeader.astro` | Section header | ✅ Converted |
-| `src/components/TestimonialCard.astro` | Semantic testimonial | ✅ Converted |
-| `src/data/site.ts` | All static content data | ✅ Unchanged |
-| `src/utils/links.ts` | WhatsApp/email link generation | ✅ Converted |
-| `astro.config.mjs` | Astro configuration | ✅ Fixed (removed @astrojs/tailwind) |
-| `postcss.config.mjs` | PostCSS config | ✅ Fixed (proper import) |
+- Removed legacy React component sources (`.tsx`) that were no longer referenced by Astro pages/components.
+- Removed legacy React/Vite test setup tied to removed components.
+- Removed orphaned React helper modules (`src/lib/render-icon.tsx`, `src/lib/links.ts`).
+- Updated `tsconfig.json` to Astro-native TypeScript settings (removed React JSX options).
+- Removed tracked build output (`dist/`) and added `/dist` to `.gitignore`.
+- Removed `vercel.json`; retained Cloudflare-compatible `public/_headers`.
+- Updated Vitest config to non-React test environment and Astro-relevant include/coverage paths.
+- Updated existing data tests to reflect current site data and removed icon tests dependent on deleted React helpers.
+- Simplified ESLint config to remove Next.js-specific preset dependency.
 
 ## Verification Status
 
 | Check | Status |
 |-------|--------|
-| `bun install` | ✅ Success (454 packages) |
-| `bun run build` | ✅ Success (5 pages built) |
-| `bun run dev` | Required |
+| `npm run typecheck` | ⚠️ Blocked (dependencies unavailable in environment) |
+| `npm run test` | ⚠️ Blocked (dependencies unavailable in environment) |
+| `npm run build` | ⚠️ Blocked (dependencies unavailable in environment) |
 
-## WhatsApp Integration
+## Current Deployment Direction
 
-- WhatsApp number: `919052088880` (updated to production number)
-- Email: `legendindustries92@gmail.com` (updated to production inbox)
-- Phone: `+91 90520 88880` (updated to production line)
-- All centralized in `src/data/site.ts` — single file to update
-
-## Migration Notes
-
-- Astro runs in static output mode (`output: 'static'`)
-- Only InquiryWidget requires client-side JavaScript (client:visible)
-- Header mobile menu uses inline vanilla JS script
-- All other pages are zero-JS static HTML
-- build output: `dist/` folder with static HTML files
-
-## Pending / Future
-
-- [x] Run `bun install` to install Astro dependencies
-- [x] Run `bun run build` to verify build
-- [ ] Run `bun run dev` to test in browser
-- [x] Update WhatsApp phone number to real business number
-- [ ] Deploy to Vercel or preferred hosting
+- Static output generated via Astro (`dist/`)
+- Cloudflare-compatible headers file remains at `public/_headers`
+- No Vercel config file in repo
 
 ## Session History
 
 | Date | Changes |
 |------|---------|
+| 2026-03-28 | Follow-up hardening: added non-React tests for `src/utils/links.ts` and icon coverage against `Icons.astro`; updated source validator script to remove stale render-icon/Tailwind integration assumptions |
+| 2026-03-28 | Cleanup/stabilization pass: removed React leftovers, fixed TypeScript/Vitest config, removed tracked dist, Cloudflare-only deployment config |
 | 2026-03-28 | Full Next.js → Astro migration with zero functional deviation |
 | 2026-03-28 | Fixed build issues: Tailwind CSS v4 config, Icons component rewrite |
-| 2026-03-27 | Reimagined Capabilities page with stronger visual hierarchy, expanded category presentation, and richer product range content across data lists |
-| 2026-03-27 | Updated production contact info, rebuilt blog as image-free SEO library (12 posts), improved inquiry qualification/CTA, and added performance headers/font loading improvements |
-| 2026-03-27 | Added Google Maps embeds and direct map links for office and factory locations on Contact page for easier navigation |
