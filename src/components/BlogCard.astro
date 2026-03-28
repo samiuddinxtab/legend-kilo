@@ -1,0 +1,66 @@
+---
+import Icon from './Icons.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  datePublished: string;
+  keywords: string[];
+}
+
+const { title, description, slug, datePublished, keywords } = Astro.props;
+
+const formattedDate = new Date(datePublished).toLocaleDateString('en-IN', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<a
+  href={`/blog/${slug}`}
+  class="group block bg-white rounded-2xl border border-neutral-200/80 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full"
+>
+  <article class="flex flex-col h-full p-6 sm:p-8 pt-10 sm:pt-12">
+    <!-- Spacer to simulate image breathing room -->
+    <div class="h-3"></div>
+
+    <!-- Meta row -->
+    <div class="flex items-center justify-between mb-5">
+      <time class="text-[11px] text-neutral-400 uppercase tracking-[0.16em] font-medium">
+        {formattedDate}
+      </time>
+      <span class="text-[10px] uppercase tracking-[0.14em] text-brand-600 font-semibold bg-brand-50 px-2.5 py-0.5 rounded-full">
+        B2B
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-xl font-bold text-neutral-900 leading-snug mb-3 group-hover:text-brand-500 transition-colors duration-200">
+      {title}
+    </h3>
+
+    <!-- Description -->
+    <p class="text-sm text-neutral-500 leading-relaxed mb-6">
+      {description}
+    </p>
+
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 mb-6">
+      {keywords.slice(0, 2).map((keyword) => (
+        <span class="text-[11px] px-3 py-1 rounded-full bg-neutral-100 text-neutral-500 font-medium">
+          {keyword}
+        </span>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-auto pt-4 border-t border-neutral-100">
+      <span class="text-sm font-semibold text-brand-500 group-hover:text-brand-600 inline-flex items-center gap-1.5 transition-colors duration-200">
+        Read Full Article
+        <Icon name="arrowRight" size={14} />
+      </span>
+    </div>
+  </article>
+</a>

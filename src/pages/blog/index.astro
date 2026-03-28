@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import WhatsAppButton from '../../components/WhatsAppButton.astro';
 import Icon from '../../components/Icons.astro';
+import BlogCard from '../../components/BlogCard.astro';
 import { BLOG_ARTICLES } from '../../data/site';
 
 const title = "Blog | LEGEND INDUSTRIES";
@@ -46,33 +47,15 @@ const description = "B2B insights on bulk bag suppliers in Hyderabad, custom cor
         />
 
         <h2 id="articles-heading" class="sr-only">Blog Articles</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {BLOG_ARTICLES.map((article) => (
-            <article class="card h-full flex flex-col">
-              <div class="flex items-center justify-between gap-3 mb-3">
-                <time class="text-xs text-neutral-500 uppercase tracking-wider">
-                  {new Date(article.datePublished).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
-                </time>
-                <span class="text-[11px] uppercase tracking-[0.14em] text-brand-600 font-semibold">B2B</span>
-              </div>
-
-              <h3 class="text-lg font-bold text-neutral-900 mb-2">
-                <a href={`/blog/${article.slug}`} class="hover:text-brand-500 transition-colors">{article.title}</a>
-              </h3>
-
-              <p class="text-sm text-neutral-600 leading-relaxed mb-4">{article.description}</p>
-
-              <div class="mt-auto">
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {article.keywords.slice(0, 2).map((keyword) => (
-                    <span class="text-xs px-2.5 py-1 rounded-full bg-neutral-100 text-neutral-600">{keyword}</span>
-                  ))}
-                </div>
-                <a href={`/blog/${article.slug}`} class="text-sm font-semibold text-brand-500 hover:text-brand-600 inline-flex items-center gap-1">
-                  Read Full Article <Icon name="arrowRight" size={14} />
-                </a>
-              </div>
-            </article>
+            <BlogCard
+              title={article.title}
+              description={article.description}
+              slug={article.slug}
+              datePublished={article.datePublished}
+              keywords={article.keywords}
+            />
           ))}
         </div>
       </div>

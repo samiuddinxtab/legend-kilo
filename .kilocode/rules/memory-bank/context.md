@@ -8,6 +8,11 @@ The repository has been cleaned of leftover Next.js/React artifacts. The Astro +
 
 ## Recently Completed (2026-03-28)
 
+- Configured Cloudflare Pages build settings: `SKIP_DEPENDENCY_INSTALL=true`, `BUN_VERSION=1.3.11`, build command `bun install && bun run build`.
+- Documented that `bun.lockb` (binary) is deprecated in Bun 1.3.x — `bun.lock` (text) is the standard.
+- Removed unused `@astrojs/tailwind` dependency (Tailwind v4 works via `@tailwindcss/postcss` + PostCSS config).
+- Standardized package manager to Bun (removed npm references from memory bank docs).
+- Updated `tech.md` and `context.md` to use `bun` commands consistently.
 - Removed legacy React component sources (`.tsx`) that were no longer referenced by Astro pages/components.
 - Removed legacy React/Vite test setup tied to removed components.
 - Removed orphaned React helper modules (`src/lib/render-icon.tsx`, `src/lib/links.ts`).
@@ -22,20 +27,25 @@ The repository has been cleaned of leftover Next.js/React artifacts. The Astro +
 
 | Check | Status |
 |-------|--------|
-| `npm run typecheck` | ⚠️ Blocked (dependencies unavailable in environment) |
-| `npm run test` | ⚠️ Blocked (dependencies unavailable in environment) |
-| `npm run build` | ⚠️ Blocked (dependencies unavailable in environment) |
+| `bun run typecheck` | ✅ Passed |
+| `bun run lint` | ✅ Passed |
+| `bun run build` | ✅ Passed (19 pages, Tailwind v4.1.17 via PostCSS) |
 
 ## Current Deployment Direction
 
 - Static output generated via Astro (`dist/`)
-- Cloudflare-compatible headers file remains at `public/_headers`
+- Cloudflare Pages with Bun build tooling (env vars: `SKIP_DEPENDENCY_INSTALL=true`, `BUN_VERSION=1.3.11`)
+- Build command: `bun install && bun run build`
+- Runtime: Node.js (Cloudflare default) — Bun used only for install + build orchestration
+- Cloudflare-compatible headers file at `public/_headers`
 - No Vercel config file in repo
 
 ## Session History
 
 | Date | Changes |
 |------|---------|
+| 2026-03-28 | Cloudflare Pages build config: set Bun as build tool via env vars (`SKIP_DEPENDENCY_INSTALL`, `BUN_VERSION`), documented `bun.lock` vs `bun.lockb` status |
+| 2026-03-28 | Dependency cleanup: removed unused `@astrojs/tailwind`, standardized package manager to Bun, updated memory bank docs |
 | 2026-03-28 | Follow-up hardening: added non-React tests for `src/utils/links.ts` and icon coverage against `Icons.astro`; updated source validator script to remove stale render-icon/Tailwind integration assumptions |
 | 2026-03-28 | Cleanup/stabilization pass: removed React leftovers, fixed TypeScript/Vitest config, removed tracked dist, Cloudflare-only deployment config |
 | 2026-03-28 | Full Next.js → Astro migration with zero functional deviation |

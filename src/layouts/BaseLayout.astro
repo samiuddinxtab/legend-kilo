@@ -232,8 +232,23 @@ const breadcrumbSchema = getBreadcrumbSchema(currentPath);
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+    <!-- Cloudflare Web Analytics (replace YOUR_TOKEN with your actual beacon token) -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_CLOUDFLARE_ANALYTICS_TOKEN"}'></script>
   </head>
   <body class="font-sans antialiased">
     <slot />
+    <script>
+      document.addEventListener('click', (e) => {
+        const link = (e.target as Element).closest('a');
+        if (!link) return;
+        const href = link.getAttribute('href') || '';
+        if (href.startsWith('https://wa.me/') || href.includes('wa.me')) {
+          (window as any).__cfBeacon?.send?.({ category: 'conversion', action: 'whatsapp_click' });
+        } else if (href.startsWith('mailto:')) {
+          (window as any).__cfBeacon?.send?.({ category: 'conversion', action: 'email_click' });
+        }
+      });
+    </script>
   </body>
 </html>
