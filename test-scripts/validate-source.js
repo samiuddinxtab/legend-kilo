@@ -77,11 +77,13 @@ for (const page of pages) {
   console.log(`    H1 headings: ${h1Count} ${page.hasH1 ? (h1Count === 1 ? '✅' : '❌') : ''}`);
   
   if (page.hasForm) {
-    const hasCompany = content.includes('inquiry-company');
-    const hasProduct = content.includes('inquiry-product');
-    const hasQuantity = content.includes('inquiry-quantity');
-    const hasDetails = content.includes('inquiry-details');
     const hasInquiryWidget = content.includes('InquiryWidget');
+    const inquiryWidgetPath = path.join(SRC_DIR, 'components', 'InquiryWidget.astro');
+    const inquiryWidgetContent = readFile(inquiryWidgetPath);
+    const hasCompany = inquiryWidgetContent.includes('inquiry-company');
+    const hasProduct = inquiryWidgetContent.includes('inquiry-product');
+    const hasQuantity = inquiryWidgetContent.includes('inquiry-quantity');
+    const hasDetails = inquiryWidgetContent.includes('inquiry-details');
     console.log(`    InquiryWidget: ${hasInquiryWidget ? '✅' : '❌'}`);
     console.log(`    Form fields: ${hasCompany && hasProduct && hasQuantity && hasDetails ? '✅ (4/4)' : '❌'}`);
   }
@@ -134,7 +136,6 @@ for (const exp of dataExports) {
 console.log('\n[UTILITIES]');
 const utils = [
   'src/utils/links.ts',
-  'src/utils/render-icon.ts',
 ];
 
 for (const util of utils) {
@@ -194,7 +195,6 @@ const configContent = readFile(configPath);
 
 const configChecks = {
   'site URL': /site:\s*'https:\/\/legendindustries\.in'/.test(configContent),
-  'Tailwind integration': /@astrojs\/tailwind/.test(configContent),
   'Static output': /output:\s*'static'/.test(configContent),
 };
 

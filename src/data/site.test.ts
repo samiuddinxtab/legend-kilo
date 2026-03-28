@@ -19,13 +19,14 @@ import {
 
 describe("data/site", () => {
   describe("NAV_ITEMS", () => {
-    it("has 5 items", () => {
-      expect(NAV_ITEMS).toHaveLength(5);
+    it("has 6 items", () => {
+      expect(NAV_ITEMS).toHaveLength(6);
     });
 
-    it("starts with Home and ends with Contact", () => {
+    it("starts with Home and includes Blog before Contact", () => {
       expect(NAV_ITEMS[0].href).toBe("/");
-      expect(NAV_ITEMS[4].href).toBe("/contact");
+      expect(NAV_ITEMS[4].href).toBe("/blog");
+      expect(NAV_ITEMS[5].href).toBe("/contact");
     });
 
     it("all items have href and label", () => {
@@ -51,8 +52,8 @@ describe("data/site", () => {
   });
 
   describe("FAQS", () => {
-    it("has 5 FAQs", () => {
-      expect(FAQS).toHaveLength(5);
+    it("has 8 FAQs", () => {
+      expect(FAQS).toHaveLength(8);
     });
 
     it("all FAQs have question and answer", () => {
@@ -132,21 +133,5 @@ describe("data/site", () => {
     it("EMAIL_ADDRESS contains @", () => {
       expect(EMAIL_ADDRESS).toContain("@");
     });
-  });
-});
-
-describe("icons", () => {
-  it("all render-icon references resolve", async () => {
-    const { renderIcon } = await import("@/lib/render-icon");
-    const iconNames = ["factory", "palette", "truck", "shield", "message", "search", "checkSquare", "cog"];
-    iconNames.forEach((name) => {
-      const result = renderIcon(name);
-      expect(result).not.toBeNull();
-    });
-  });
-
-  it("unknown icon name returns null", async () => {
-    const { renderIcon } = await import("@/lib/render-icon");
-    expect(renderIcon("nonexistent")).toBeNull();
   });
 });
