@@ -32,8 +32,24 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, 
               WhatsApp is the fastest way to get a quote.
             </p>
 
-            
-
+            <div class="flex flex-wrap items-center gap-3">
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-6 py-3 min-h-[52px] bg-[var(--color-wa-green)] text-white font-semibold rounded-xl hover:bg-[var(--color-wa-green-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-wa-green)] transition-colors text-base"
+              >
+                <Icon name="whatsapp" size={20} />
+                WhatsApp Now
+              </a>
+              <a
+                href={PHONE_TEL}
+                class="inline-flex items-center gap-2 px-5 py-3 min-h-[52px] border border-white/20 text-neutral-200 font-medium rounded-xl hover:border-white/40 hover:text-white hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors text-base"
+              >
+                <Icon name="phone" size={18} />
+                {PHONE_NUMBER}
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -64,7 +80,7 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, 
               </a>
 
               <a
-                href={PHONE_TEL}
+                href={`tel:${PHONE_TEL}`}
                 class="flex items-center gap-3.5 p-4 bg-white border border-neutral-200 rounded-xl text-inherit no-underline hover:border-brand-500 hover:shadow-sm transition-colors"
               >
                 <div class="w-10 h-10 rounded-lg bg-neutral-100 text-neutral-600 flex items-center justify-center shrink-0">

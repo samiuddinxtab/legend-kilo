@@ -122,7 +122,7 @@ const engagementModels = [
 
         <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {productGroups.map((group) => (
-            <article id={group.id} class="card border border-neutral-200/70">
+            <article id={group.id} class="card border border-neutral-300">
               <div class="flex items-start justify-between gap-4 mb-5">
                 <div>
                   <p class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 mb-2">{group.label}</p>
@@ -218,7 +218,7 @@ const engagementModels = [
             label="Discuss Your Requirement"
             size="lg"
           />
-          <a href="/process" class="btn-outline border-neutral-600 text-white hover:border-brand-400 hover:text-brand-400">
+          <a href="/process" class="btn-outline-dark border-neutral-600 text-white hover:border-[var(--color-wa-green)] hover:text-[var(--color-wa-green)]">
             See How Orders Work <Icon name="arrowRight" />
           </a>
         </div>
