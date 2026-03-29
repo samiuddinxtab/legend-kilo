@@ -246,22 +246,27 @@ export const UTILITY_TYPES = [
 
 export const CUSTOMIZATION_OPTIONS = [
   {
+    icon: "paintbrush" as const,
     title: "Logo Printing & Branding",
     desc: "Screen printing, embroidery, heat transfer, and more. Your brand, prominently displayed.",
   },
   {
+    icon: "fileText" as const,
     title: "Size & Dimensions",
     desc: "Custom sizing to fit your specific use case. Standard and non-standard dimensions available.",
   },
   {
+    icon: "cog" as const,
     title: "Material Selection",
     desc: "Canvas, nylon, polyester, jute, cotton, leatherette — choose what fits your brand and budget.",
   },
   {
+    icon: "palette" as const,
     title: "Color Combinations",
-    desc: "Match your brand colors precisely. We work with Pantone references and custom color specifications.",
+    desc: "Match your brand colors precisely. We work with custom color specifications.",
   },
   {
+    icon: "gift" as const,
     title: "Packaging & Finishing",
     desc: "Individual poly bags, custom boxes, branded tags, hang tags — packaging that matches your standards.",
   },

@@ -12,7 +12,7 @@ const description = "Bulk manufacturing partner for custom bags, eco bags, corpo
 
 const capabilityStats = [
   { value: "40+", label: "Product formats" },
-  { value: "5", label: "Core categories" },
+  { value: "4", label: "Core categories" },
   { value: "PAN India", label: "Supply footprint" },
   { value: "1–3 Weeks", label: "Typical dispatch window" },
 ] as const;
@@ -164,7 +164,7 @@ const engagementModels = [
           {CUSTOMIZATION_OPTIONS.map((item) => (
             <div class="card">
               <div class="w-12 h-12 rounded-xl bg-brand-50 text-brand-500 flex items-center justify-center mb-4">
-                <Icon name="paintbrush" />
+                <Icon name={item.icon} />
               </div>
               <h3 class="font-bold text-neutral-900 mb-2">{item.title}</h3>
               <p class="text-sm text-neutral-600 leading-relaxed">{item.desc}</p>
