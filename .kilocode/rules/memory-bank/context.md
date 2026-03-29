@@ -6,6 +6,10 @@
 
 The repository has been cleaned of leftover Next.js/React artifacts. The Astro + TypeScript + Tailwind stack is now consistent, and deployment config is Cloudflare-only.
 
+## Recently Completed (2026-03-29)
+
+- Assigned unique semantic icons to Customization Layer cards on Capabilities page: `paintbrush` (Logo Printing), `fileText` (Size & Dimensions), `cog` (Material Selection), `palette` (Color Combinations), `gift` (Packaging & Finishing). Added `icon` field to `CUSTOMIZATION_OPTIONS` data in `site.ts`.
+
 ## Recently Completed (2026-03-28)
 
 - Configured Cloudflare Pages build settings: `SKIP_DEPENDENCY_INSTALL=true`, `BUN_VERSION=1.3.11`, build command `bun install && bun run build`.
@@ -44,6 +48,7 @@ The repository has been cleaned of leftover Next.js/React artifacts. The Astro +
 
 | Date | Changes |
 |------|---------|
+| 2026-03-29 | Capabilities page: assigned unique semantic icons to each Customization Layer card (paintbrush, fileText, cog, palette, gift) instead of repeated generic icon |
 | 2026-03-28 | Cloudflare Pages build config: set Bun as build tool via env vars (`SKIP_DEPENDENCY_INSTALL`, `BUN_VERSION`), documented `bun.lock` vs `bun.lockb` status |
 | 2026-03-28 | Dependency cleanup: removed unused `@astrojs/tailwind`, standardized package manager to Bun, updated memory bank docs |
 | 2026-03-28 | Follow-up hardening: added non-React tests for `src/utils/links.ts` and icon coverage against `Icons.astro`; updated source validator script to remove stale render-icon/Tailwind integration assumptions |
