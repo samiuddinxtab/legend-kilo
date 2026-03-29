@@ -1,231 +1,233 @@
 ---
 import Icon from './Icons.astro';
-import { WHATSAPP_NUMBER, EMAIL_ADDRESS, PHONE_NUMBER, PHONE_TEL, PRODUCT_OPTIONS, QUANTITY_OPTIONS } from '../data/site';
+import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER, EMAIL_ADDRESS, PHONE_TEL } from '../data/site';
 ---
 
-<div class="card" role="region" aria-label="Quick inquiry">
-  <a
-    id="wa-link"
-    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I need bulk bags for my business. Can you help?")}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="flex items-center justify-center gap-2 w-full py-4 px-6 text-lg font-semibold text-white bg-green-600 rounded-lg hover:bg-green-700 active:bg-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 transition-colors"
-  >
-    <Icon name="whatsapp" size={20} />
-    Chat on WhatsApp
-  </a>
-
-  <div class="flex gap-3 mt-3">
+<div class="bg-white rounded-2xl border border-neutral-200 overflow-hidden">
+  <div class="px-7 py-7 bg-neutral-50 border-b border-neutral-100">
     <a
-      href={`tel:${PHONE_TEL}`}
-      class="flex-1 flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold text-neutral-700 bg-neutral-100 rounded-lg hover:bg-neutral-200 active:bg-neutral-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-400 transition-colors min-h-11"
+      id="wa-instant-btn"
+      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I need bulk bags for my business. Can you help?")}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-whatsapp w-full"
+      aria-label="Contact on WhatsApp"
     >
-      <Icon name="phone" size={18} />
-      Call
+      <Icon name="whatsapp" size={22} />
+      WhatsApp Us
     </a>
-    <a
-      id="email-link"
-      href={`mailto:${EMAIL_ADDRESS}?subject=Bulk%20Order%20Inquiry`}
-      class="flex-1 flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold text-neutral-500 bg-neutral-100 rounded-lg hover:bg-neutral-200 active:bg-neutral-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-400 transition-colors min-h-11"
-    >
-      <Icon name="mail" size={18} />
-      Email
-    </a>
-  </div>
 
-  <p class="text-xs text-neutral-500 mt-3 text-center">
-    Fastest response on WhatsApp · Usually replies within 2 hours
-  </p>
-
-  <div class="flex gap-2 mt-4 flex-wrap" role="group" aria-label="Inquiry type">
-    <button
-      type="button"
-      data-intent="bulk"
-      class="intent-pill px-4 py-2 rounded-full text-sm font-medium border border-neutral-300 text-neutral-700 bg-white hover:border-neutral-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-400 transition-colors min-h-11 active-intent"
-    >
-      Bulk Order
-    </button>
-    <button
-      type="button"
-      data-intent="custom"
-      class="intent-pill px-4 py-2 rounded-full text-sm font-medium border border-neutral-300 text-neutral-700 bg-white hover:border-neutral-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-400 transition-colors min-h-11"
-    >
-      Custom Design
-    </button>
-    <button
-      type="button"
-      data-intent="sample"
-      class="intent-pill px-4 py-2 rounded-full text-sm font-medium border border-neutral-300 text-neutral-700 bg-white hover:border-neutral-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-400 transition-colors min-h-11"
-    >
-      Sample Request
-    </button>
-  </div>
-
-  <div class="space-y-3 mt-5">
-    <div>
-      <label for="iw-name" class="block text-sm font-medium text-neutral-700 mb-1.5">Name</label>
-      <input
-        id="iw-name"
-        type="text"
-        placeholder="Your name"
-        autocomplete="name"
-        class="w-full px-4 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-800 placeholder:text-neutral-400 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
-      />
+    <div class="grid grid-cols-2 gap-2.5 mt-2.5">
+      <a href={PHONE_TEL} class="btn-secondary" aria-label="Call us">
+        <Icon name="phone" size={18} />
+        Call Now
+      </a>
+      <a href={`mailto:${EMAIL_ADDRESS}`} class="btn-secondary" aria-label="Send email">
+        <Icon name="mail" size={18} />
+        Email
+      </a>
     </div>
-    <div>
-      <label for="iw-phone" class="block text-sm font-medium text-neutral-700 mb-1.5">Phone</label>
-      <input
-        id="iw-phone"
-        type="tel"
-        placeholder="Your phone number"
-        autocomplete="tel"
-        inputmode="tel"
-        class="w-full px-4 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-800 placeholder:text-neutral-400 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors"
-      />
+
+    <p class="flex items-center gap-2 mt-3 text-xs text-neutral-500">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-[var(--color-wa-green)] shrink-0" aria-hidden="true"></span>
+      Fastest response on WhatsApp · Usually within 2 hours
+    </p>
+  </div>
+
+  <div class="flex items-center gap-3 px-7 h-10 bg-white text-xs text-neutral-400 font-medium uppercase tracking-wider">
+    <span class="flex-1 h-px bg-neutral-200"></span>
+    <span>or send a message</span>
+    <span class="flex-1 h-px bg-neutral-200"></span>
+  </div>
+
+  <div class="px-7 pb-5">
+    <p class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2.5">What are you looking for?</p>
+    <div class="flex flex-wrap gap-2" role="group" aria-label="Inquiry type">
+      <button type="button" class="chip chip--active" data-intent="Bulk Order" aria-pressed="true">Bulk Order</button>
+      <button type="button" class="chip" data-intent="Custom Design" aria-pressed="false">Custom Design</button>
+      <button type="button" class="chip" data-intent="Sample Request" aria-pressed="false">Sample</button>
     </div>
   </div>
 
-  <details class="mt-4 group">
-    <summary class="text-sm text-neutral-500 cursor-pointer hover:text-neutral-700 transition-colors flex items-center gap-1 select-none">
-      <svg class="w-4 h-4 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-        <path d="m6 9 6 6 6-6" />
-      </svg>
-      More details (optional)
-    </summary>
-    <div class="space-y-3 mt-3">
-      <div>
-        <label for="iw-category" class="block text-sm font-medium text-neutral-700 mb-1.5">Product Category</label>
-        <select
-          id="iw-category"
-          class="w-full px-4 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-800 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors appearance-none"
-        >
-          <option value="">Select a category</option>
-          {PRODUCT_OPTIONS.map((opt) => (
-            <option value={opt}>{opt}</option>
-          ))}
-        </select>
+  <div class="px-7 pb-7 flex flex-col gap-4">
+    <div class="grid sm:grid-cols-2 gap-3">
+      <div class="flex flex-col gap-1.5">
+        <label for="inq-name" class="text-xs font-semibold text-neutral-600">Your Name</label>
+        <input
+          id="inq-name"
+          type="text"
+          autocomplete="name"
+          placeholder="e.g. Rahul Sharma"
+          class="field-input"
+        />
       </div>
-      <div>
-        <label for="iw-quantity" class="block text-sm font-medium text-neutral-700 mb-1.5">Quantity</label>
-        <select
-          id="iw-quantity"
-          class="w-full px-4 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-800 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors appearance-none"
-        >
-          <option value="">Select quantity range</option>
-          {QUANTITY_OPTIONS.map((opt) => (
-            <option value={opt}>{opt}</option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <label for="iw-notes" class="block text-sm font-medium text-neutral-700 mb-1.5">Additional Notes</label>
-        <textarea
-          id="iw-notes"
-          rows={3}
-          placeholder="Logo type, material preference, delivery city"
-          class="w-full px-4 py-3 rounded-lg border border-neutral-300 bg-white text-neutral-800 placeholder:text-neutral-400 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors resize-none"
-        ></textarea>
+      <div class="flex flex-col gap-1.5">
+        <label for="inq-phone" class="text-xs font-semibold text-neutral-600">Phone / WhatsApp</label>
+        <input
+          id="inq-phone"
+          type="tel"
+          autocomplete="tel"
+          inputmode="numeric"
+          placeholder="e.g. 98490 XXXXX"
+          class="field-input"
+        />
       </div>
     </div>
-  </details>
 
-  <div class="flex items-center justify-center gap-6 mt-6 pt-4 border-t border-neutral-100 text-xs text-neutral-500">
-    <span class="flex items-center gap-1">
-      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-        <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
-      </svg>
-      Quote in 24 hrs
-    </span>
-    <span class="flex items-center gap-1">
-      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-      </svg>
-      WhatsApp support
-    </span>
-    <span class="flex items-center gap-1">
-      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-      No spam
-    </span>
+    <details class="border border-neutral-200 rounded-xl overflow-hidden" id="optional-details">
+      <summary class="flex items-center gap-2 px-4 py-3 text-sm font-medium text-neutral-500 cursor-pointer list-none hover:bg-neutral-50 transition-colors select-none">
+        <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+        Add more details
+        <span class="text-xs font-normal text-neutral-400 ml-1">optional</span>
+      </summary>
+
+      <div class="px-4 pb-4 pt-2 flex flex-col gap-3.5 border-t border-neutral-100 bg-neutral-50">
+        <div class="flex flex-col gap-1.5">
+          <label for="inq-product" class="text-xs font-semibold text-neutral-600">
+            Product Category <span class="font-normal text-neutral-400">optional</span>
+          </label>
+          <select id="inq-product" class="field-select">
+            <option value="">Select a category</option>
+            {PRODUCT_OPTIONS.map((opt) => (
+              <option value={opt}>{opt}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="inq-quantity" class="text-xs font-semibold text-neutral-600">
+            Approximate Quantity <span class="font-normal text-neutral-400">optional</span>
+          </label>
+          <select id="inq-quantity" class="field-select">
+            <option value="">Select quantity range</option>
+            {QUANTITY_OPTIONS.map((opt) => (
+              <option value={opt}>{opt}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="inq-details" class="text-xs font-semibold text-neutral-600">
+            Additional Notes <span class="font-normal text-neutral-400">optional</span>
+          </label>
+          <textarea
+            id="inq-details"
+            rows={3}
+            placeholder="Material, branding, delivery city, timeline..."
+            class="field-input resize-none min-h-20 leading-relaxed"
+          ></textarea>
+        </div>
+      </div>
+    </details>
+
+    <button type="button" id="send-whatsapp-btn" class="btn-primary w-full min-h-[52px] text-base" aria-label="Send inquiry via WhatsApp">
+      <Icon name="whatsapp" size={20} />
+      Get Quote on WhatsApp
+    </button>
+
+    <div class="flex flex-wrap gap-4 justify-center pt-1 text-xs text-neutral-400 font-medium" role="list">
+      <span class="flex items-center gap-1.5" role="listitem">
+        <svg class="w-3.5 h-3.5 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Quote in 24 hrs
+      </span>
+      <span class="flex items-center gap-1.5" role="listitem">
+        <svg class="w-3.5 h-3.5 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        WhatsApp support
+      </span>
+      <span class="flex items-center gap-1.5" role="listitem">
+        <svg class="w-3.5 h-3.5 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        No spam
+      </span>
+    </div>
   </div>
 </div>
 
-<script define:vars={{ whatsappNumber: WHATSAPP_NUMBER, emailAddress: EMAIL_ADDRESS }}>
-  const pills = document.querySelectorAll('.intent-pill');
-  const waLink = document.getElementById('wa-link');
-  const emailLink = document.getElementById('email-link');
-  const nameInput = document.getElementById('iw-name');
-  const phoneInput = document.getElementById('iw-phone');
-  const categorySelect = document.getElementById('iw-category');
-  const quantitySelect = document.getElementById('iw-quantity');
-  const notesTextarea = document.getElementById('iw-notes');
+<script define:vars={{ whatsappNumber: WHATSAPP_NUMBER }}>
+  const waInstantBtn = document.getElementById('wa-instant-btn');
+  const sendBtn = document.getElementById('send-whatsapp-btn');
+  const chips = document.querySelectorAll('.chip');
+  const nameInput = document.getElementById('inq-name');
+  const phoneInput = document.getElementById('inq-phone');
+  const productSelect = document.getElementById('inq-product');
+  const quantitySelect = document.getElementById('inq-quantity');
+  const detailsTextarea = document.getElementById('inq-details');
 
-  let activeIntent = 'bulk';
+  let activeIntent = 'Bulk Order';
 
-  const intentMessages = {
-    bulk: 'Hi, I need bulk bags for my business. Can you help?',
-    custom: 'Hi, I need custom bags made for my brand. Can you help?',
-    sample: 'Hi, I need product samples before placing a bulk order. Can you help?',
-  };
-
-  function getFullMessage() {
-    let msg = intentMessages[activeIntent] || intentMessages.bulk;
-
-    const name = nameInput?.value.trim() || '';
-    const phone = phoneInput?.value.trim() || '';
-    const category = categorySelect?.value || '';
-    const quantity = quantitySelect?.value || '';
-    const notes = notesTextarea?.value.trim() || '';
-
-    if (name || phone || category || quantity || notes) {
-      msg += '\n\n';
-      if (name) msg += 'Name: ' + name + '\n';
-      if (phone) msg += 'Phone: ' + phone + '\n';
-      if (category) msg += 'Category: ' + category + '\n';
-      if (quantity) msg += 'Quantity: ' + quantity + '\n';
-      if (notes) msg += 'Notes: ' + notes + '\n';
-    }
-
-    return msg;
-  }
-
-  function updateLinks() {
-    const msg = getFullMessage();
-
-    if (waLink) {
-      waLink.href = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(msg);
-    }
-
-    if (emailLink) {
-      emailLink.href =
-        'mailto:' + emailAddress +
-        '?subject=' + encodeURIComponent('Inquiry — ' + (categorySelect?.value || 'Bulk Order')) +
-        '&body=' + encodeURIComponent(msg);
-    }
-  }
-
-  pills.forEach(function (pill) {
-    pill.addEventListener('click', function () {
-      activeIntent = pill.dataset.intent || 'bulk';
-
-      pills.forEach(function (p) {
-        p.classList.remove('active-intent', 'bg-brand-500', 'text-white', 'border-brand-500');
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => {
+        c.classList.remove('chip--active');
+        c.setAttribute('aria-pressed', 'false');
       });
-
-      pill.classList.add('active-intent', 'bg-brand-500', 'text-white', 'border-brand-500');
-      updateLinks();
+      chip.classList.add('chip--active');
+      chip.setAttribute('aria-pressed', 'true');
+      activeIntent = chip.dataset.intent || 'Bulk Order';
+      updateSendButton();
     });
   });
 
-  nameInput?.addEventListener('input', updateLinks);
-  phoneInput?.addEventListener('input', updateLinks);
-  categorySelect?.addEventListener('change', updateLinks);
-  quantitySelect?.addEventListener('change', updateLinks);
-  notesTextarea?.addEventListener('input', updateLinks);
+  function buildMessage() {
+    const name = nameInput?.value.trim() || '';
+    const phone = phoneInput?.value.trim() || '';
+    const product = productSelect?.value || '';
+    const quantity = quantitySelect?.value || '';
+    const details = detailsTextarea?.value.trim() || '';
 
-  const activeBtn = document.querySelector('.intent-pill.active-intent');
-  if (activeBtn) {
-    activeBtn.classList.add('bg-brand-500', 'text-white', 'border-brand-500');
+    let msg = 'Hi, I need ' + activeIntent.toLowerCase() + ' for my business.';
+
+    if (name) msg += ' My name is ' + name + '.';
+    if (phone) msg += ' You can reach me on ' + phone + '.';
+    if (product) msg += ' Looking for: ' + product + '.';
+    if (quantity) msg += ' Quantity: ' + quantity + '.';
+    if (details) msg += ' ' + details + '.';
+
+    msg += ' Can you help?';
+    return msg;
   }
+
+  function updateSendButton() {
+    if (!sendBtn) return;
+    const msg = buildMessage();
+    const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(msg);
+    sendBtn.dataset.href = url;
+  }
+
+  sendBtn?.addEventListener('click', () => {
+    const url = sendBtn.dataset.href || 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(buildMessage());
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+
+  [nameInput, phoneInput, detailsTextarea].forEach((el) => {
+    el?.addEventListener('input', updateSendButton);
+  });
+  [productSelect, quantitySelect].forEach((el) => {
+    el?.addEventListener('change', updateSendButton);
+  });
+
+  updateSendButton();
 </script>
+
+<style>
+  .field-input {
+    @apply w-full min-h-11 px-3.5 py-2.5 border border-neutral-200 rounded-lg bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors outline-none;
+  }
+
+  .field-select {
+    @apply w-full min-h-11 px-3.5 py-2.5 border border-neutral-200 rounded-lg bg-white text-sm text-neutral-900 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors outline-none appearance-none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8a29e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  .chip {
+    @apply px-4 py-2 min-h-11 border border-neutral-200 rounded-full bg-white text-sm font-medium text-neutral-600 cursor-pointer transition-colors hover:border-brand-400 hover:text-brand-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-400;
+  }
+
+  .chip--active {
+    @apply border-brand-500 text-brand-700 bg-brand-50;
+  }
+</style>
