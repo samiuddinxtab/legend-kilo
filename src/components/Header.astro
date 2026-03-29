@@ -1,6 +1,8 @@
 ---
 import { NAV_ITEMS } from '../data/site';
 import Icon from './Icons.astro';
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 z-50 bg-white/95 border-b border-neutral-200">
@@ -26,7 +28,8 @@ import Icon from './Icons.astro';
         {NAV_ITEMS.map((item) => (
           <a
             href={item.href}
-            class="px-4 py-2 text-sm font-medium text-neutral-600 hover:text-brand-500 rounded-lg hover:bg-brand-50 transition-all duration-200"
+            class={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${currentPath === item.href ? 'text-brand-500 bg-brand-50 font-semibold' : 'text-neutral-600 hover:text-brand-500 hover:bg-brand-50'}`}
+            aria-current={currentPath === item.href ? 'page' : undefined}
           >
             {item.label}
           </a>
@@ -60,7 +63,8 @@ import Icon from './Icons.astro';
         {NAV_ITEMS.map((item) => (
           <a
             href={item.href}
-            class="px-4 py-3 text-base font-medium text-neutral-700 hover:text-brand-500 hover:bg-brand-50 rounded-lg transition-all duration-200"
+            class={`px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 ${currentPath === item.href ? 'text-brand-500 bg-brand-50 font-semibold' : 'text-neutral-700 hover:text-brand-500 hover:bg-brand-50'}`}
+            aria-current={currentPath === item.href ? 'page' : undefined}
           >
             {item.label}
           </a>

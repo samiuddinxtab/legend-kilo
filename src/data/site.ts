@@ -224,7 +224,7 @@ export const ECO_TYPES = [
 ] as const;
 
 export const CORPORATE_TYPES = [
-  "Office stationery (non-kid)",
+  "Office stationery kits",
   "Corporate kits",
   "Promotional combinations",
   "Employee onboarding kits",
