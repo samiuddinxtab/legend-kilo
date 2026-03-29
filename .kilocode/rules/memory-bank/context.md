@@ -8,10 +8,10 @@ The repository has been cleaned of leftover Next.js/React artifacts. The Astro +
 
 ## Recently Completed (2026-03-29)
 
-- Rewrote InquiryWidget (`src/components/InquiryWidget.astro`): WhatsApp-first lead capture architecture. Removed all `required` attributes, `pointer-events-none`, and `opacity-50` gating. WhatsApp href is pre-rendered at build time — always functional. Intent pills (Bulk Order / Custom Design / Sample Request) modify pre-fill message. Optional Name/Phone form fields (not required). Collapsible "More details" section with product category, quantity, notes. Trust signals at bottom (Quote in 24 hrs, WhatsApp support, No spam). All tap targets ≥44px. Phone input uses `inputmode="tel"` for mobile keyboard.
-- Optimized Capabilities page hero section: removed radial gradient layers, removed `backdrop-blur-sm` from stat cards, shortened body copy from 75 to ~34 words (55% reduction), kept all 4 stat cards in a `grid-cols-2 sm:grid-cols-4` layout for mobile-first rendering.
-- Fixed broken DOM nesting in "Where It Fits" / "Use Cases" section — missing `</div>` closing tag for `lg:col-span-2` wrapper was causing grid misalignment.
-- Assigned unique semantic icons to Customization Layer cards on Capabilities page: `paintbrush` (Logo Printing), `fileText` (Size & Dimensions), `cog` (Material Selection), `palette` (Color Combinations), `gift` (Packaging & Finishing). Added `icon` field to `CUSTOMIZATION_OPTIONS` data in `site.ts`.
+- Aligned contact.astro and InquiryWidget.astro to design system: removed scoped `<style>` blocks entirely (contact had 405 lines of custom CSS), replaced all hardcoded hex colors with Tailwind design tokens (neutral-900, brand-500, etc.), normalized spacing to Tailwind scale, replaced media queries with `sm:`/`lg:` prefixes, removed `font-family: 'Syne'` references. Added `--color-wa-green` and `--color-wa-green-hover` CSS variables to global.css as single-source-of-truth for WhatsApp brand color.
+- Rewrote InquiryWidget: WhatsApp-first lead capture architecture. Removed all `required` attributes, `pointer-events-none`, and `opacity-50` gating. Intent pills (Bulk Order/Custom Design/Sample Request) modify pre-fill message. Optional Name/Phone form fields. Collapsible "More details" section. Trust signals. All tap targets ≥44px. Phone input uses `inputmode="tel"`.
+- Optimized Capabilities page hero: removed radial gradients, removed `backdrop-blur-sm`, shortened copy 55%.
+- Fixed broken DOM nesting in "Where It Fits" section — missing `</div>` in grid wrapper.
 
 ## Recently Completed (2026-03-28)
 
@@ -51,6 +51,7 @@ The repository has been cleaned of leftover Next.js/React artifacts. The Astro +
 
 | Date | Changes |
 |------|---------|
+| 2026-03-29 | Aligned contact.astro and InquiryWidget.astro to design system: removed scoped <style> blocks, replaced hardcoded hex with Tailwind tokens, added wa-green CSS variables to global.css |
 | 2026-03-29 | Rewrote InquiryWidget to WhatsApp-first lead capture: removed form gating (required/pointer-events-none/opacity), pre-rendered WhatsApp href, intent pills, optional fields, collapsible details, trust signals |
 | 2026-03-29 | Capabilities hero optimization: removed radial gradients + backdrop-blur, shortened copy 55%, kept 4 stat cards in 2-col mobile grid; fixed broken DOM in Use Cases section (missing </div>) |
 | 2026-03-29 | Capabilities page: assigned unique semantic icons to each Customization Layer card (paintbrush, fileText, cog, palette, gift) instead of repeated generic icon |
