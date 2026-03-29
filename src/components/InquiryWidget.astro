@@ -1,38 +1,10 @@
 ---
 import Icon from './Icons.astro';
-import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER, EMAIL_ADDRESS, PHONE_TEL } from '../data/site';
+import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER, EMAIL_ADDRESS } from '../data/site';
 ---
 
 <div class="bg-white rounded-2xl border border-neutral-200 overflow-hidden">
   <div class="px-7 py-7 bg-neutral-50 border-b border-neutral-100">
-    <a
-      id="wa-instant-btn"
-      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I need bulk bags for my business. Can you help?")}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn-whatsapp w-full"
-      aria-label="Contact on WhatsApp"
-    >
-      <Icon name="whatsapp" size={22} />
-      WhatsApp Us
-    </a>
-
-    <div class="grid grid-cols-2 gap-[10px] mt-[10px]">
-      <a href={PHONE_TEL} class="btn-secondary" aria-label="Call us">
-        <Icon name="phone" size={18} />
-        Call Now
-      </a>
-      <a href={`mailto:${EMAIL_ADDRESS}`} class="btn-secondary" aria-label="Send email">
-        <Icon name="mail" size={18} />
-        Email
-      </a>
-    </div>
-
-    <p class="flex items-center gap-2 mt-3 text-xs text-neutral-500">
-      <span class="inline-block w-[6px] h-[6px] rounded-full bg-[var(--color-wa-green)] shrink-0" aria-hidden="true"></span>
-      Fastest response on WhatsApp · Usually within 2 hours
-    </p>
-  </div>
 
   <div class="flex items-center gap-3 px-7 h-10 bg-white text-xs text-neutral-400 font-medium uppercase tracking-wider">
     <span class="flex-1 h-px bg-neutral-200"></span>
@@ -42,38 +14,15 @@ import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER, EMAIL_ADDRESS, PHON
 
   <div class="px-7 pb-5">
     <p class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-[10px]">What are you looking for?</p>
-    <div class="flex flex-wrap gap-2" role="group" aria-label="Inquiry type">
-      <button type="button" class="chip chip--active" data-intent="Bulk Order" aria-pressed="true">Bulk Order</button>
-      <button type="button" class="chip" data-intent="Custom Design" aria-pressed="false">Custom Design</button>
-      <button type="button" class="chip" data-intent="Sample Request" aria-pressed="false">Sample</button>
+    <div class="flex flex-wrap gap-2" role="group" aria-label="Product category">
+      <button type="button" class="chip chip--active" data-intent="Custom Bags" aria-pressed="true">Custom Bags</button>
+      <button type="button" class="chip" data-intent="Eco Bags" aria-pressed="false">Eco Bags</button>
+      <button type="button" class="chip" data-intent="Corporate Gifting" aria-pressed="false">Corporate Gifting</button>
+      <button type="button" class="chip" data-intent="Utility Merchandise" aria-pressed="false">Utility Merchandise</button>
     </div>
   </div>
 
   <div class="px-7 pb-7 flex flex-col gap-4">
-    <div class="grid sm:grid-cols-2 gap-3">
-      <div class="flex flex-col gap-[6px]">
-        <label for="inq-name" class="text-xs font-semibold text-neutral-600">Your Name</label>
-        <input
-          id="inq-name"
-          type="text"
-          autocomplete="name"
-          placeholder="e.g. Rahul Sharma"
-          class="field-input"
-        />
-      </div>
-      <div class="flex flex-col gap-[6px]">
-        <label for="inq-phone" class="text-xs font-semibold text-neutral-600">Phone / WhatsApp</label>
-        <input
-          id="inq-phone"
-          type="tel"
-          autocomplete="tel"
-          inputmode="numeric"
-          placeholder="e.g. 98490 XXXXX"
-          class="field-input"
-        />
-      </div>
-    </div>
-
     <details class="border border-neutral-200 rounded-xl overflow-hidden" id="optional-details">
       <summary class="flex items-center gap-2 px-4 py-3 text-sm font-medium text-neutral-500 cursor-pointer list-none hover:bg-neutral-50 transition-colors select-none">
         <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -145,16 +94,13 @@ import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER, EMAIL_ADDRESS, PHON
 </div>
 
 <script define:vars={{ whatsappNumber: WHATSAPP_NUMBER }}>
-  const waInstantBtn = document.getElementById('wa-instant-btn');
   const sendBtn = document.getElementById('send-whatsapp-btn');
   const chips = document.querySelectorAll('.chip');
-  const nameInput = document.getElementById('inq-name');
-  const phoneInput = document.getElementById('inq-phone');
   const productSelect = document.getElementById('inq-product');
   const quantitySelect = document.getElementById('inq-quantity');
   const detailsTextarea = document.getElementById('inq-details');
 
-  let activeIntent = 'Bulk Order';
+  let activeIntent = 'Custom Bags';
 
   chips.forEach((chip) => {
     chip.addEventListener('click', () => {
@@ -164,27 +110,22 @@ import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER, EMAIL_ADDRESS, PHON
       });
       chip.classList.add('chip--active');
       chip.setAttribute('aria-pressed', 'true');
-      activeIntent = chip.dataset.intent || 'Bulk Order';
+      activeIntent = chip.dataset.intent || 'Custom Bags';
       updateSendButton();
     });
   });
 
   function buildMessage() {
-    const name = nameInput?.value.trim() || '';
-    const phone = phoneInput?.value.trim() || '';
     const product = productSelect?.value || '';
     const quantity = quantitySelect?.value || '';
     const details = detailsTextarea?.value.trim() || '';
 
-    let msg = 'Hi, I need ' + activeIntent.toLowerCase() + ' for my business.';
+    let msg = 'Hi, I\'m looking for ' + activeIntent.toLowerCase() + ' in bulk. Can you help?';
 
-    if (name) msg += ' My name is ' + name + '.';
-    if (phone) msg += ' You can reach me on ' + phone + '.';
     if (product) msg += ' Looking for: ' + product + '.';
     if (quantity) msg += ' Quantity: ' + quantity + '.';
     if (details) msg += ' ' + details + '.';
 
-    msg += ' Can you help?';
     return msg;
   }
 
@@ -200,7 +141,7 @@ import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER, EMAIL_ADDRESS, PHON
     window.open(url, '_blank', 'noopener,noreferrer');
   });
 
-  [nameInput, phoneInput, detailsTextarea].forEach((el) => {
+  [detailsTextarea].forEach((el) => {
     el?.addEventListener('input', updateSendButton);
   });
   [productSelect, quantitySelect].forEach((el) => {

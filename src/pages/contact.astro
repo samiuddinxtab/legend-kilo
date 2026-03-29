@@ -4,12 +4,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import InquiryWidget from '../components/InquiryWidget.astro';
 import Icon from '../components/Icons.astro';
-import { EMAIL_ADDRESS, PHONE_NUMBER, PHONE_TEL, WHATSAPP_NUMBER, LOCATIONS } from '../data/site';
+import { EMAIL_ADDRESS, PHONE_NUMBER, PHONE_TEL, LOCATIONS } from '../data/site';
 
 const title = "Contact | LEGEND INDUSTRIES";
 const description = "Contact LEGEND INDUSTRIES for bulk bag manufacturing and corporate gifting. WhatsApp for fastest response. Hyderabad-based, PAN India supply.";
-
-const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I need bulk bags for my business. Can you help?")}`;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -20,36 +18,17 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, 
       <div class="container-site section-padding">
         <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
           <div class="max-w-2xl">
-            <span class="inline-block text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-brand-500 mb-5">
+            <span class="inline-block text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-brand-300 mb-5">
               Get In Touch
             </span>
             <h1 id="contact-hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-5">
               Let&apos;s talk about<br />
-              <span class="text-brand-500">your requirement</span>
+              <span class="text-brand-300">your requirement</span>
             </h1>
             <p class="text-base sm:text-lg text-neutral-300 max-w-md mb-8">
               Bulk bags, custom branding, corporate gifting — we manufacture and ship PAN India.
               WhatsApp is the fastest way to get a quote.
             </p>
-
-            <div class="flex flex-wrap items-center gap-3">
-              <a
-                href={waHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-6 py-3 min-h-[52px] bg-[var(--color-wa-green)] text-white font-semibold rounded-xl hover:bg-[var(--color-wa-green-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-wa-green)] transition-colors text-base"
-              >
-                <Icon name="whatsapp" size={20} />
-                WhatsApp Now
-              </a>
-              <a
-                href={PHONE_TEL}
-                class="inline-flex items-center gap-2 px-5 py-3 min-h-[52px] border border-white/20 text-neutral-200 font-medium rounded-xl hover:border-white/40 hover:text-white hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors text-base"
-              >
-                <Icon name="phone" size={18} />
-                {PHONE_NUMBER}
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -63,7 +42,7 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, 
 
             <div class="flex flex-col gap-2.5 mb-7">
               <a
-                href={waHref}
+                href="https://wa.me/919052088880?text=Hi%2C%20I%20need%20bulk%20bags%20for%20my%20business.%20Can%20you%20help%3F"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="flex items-center gap-3.5 p-4 bg-[var(--color-wa-green)]/10 border border-[var(--color-wa-green)]/30 rounded-xl text-inherit no-underline hover:border-[var(--color-wa-green)] hover:shadow-md transition-colors"
