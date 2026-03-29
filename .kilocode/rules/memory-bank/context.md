@@ -8,6 +8,8 @@ The repository has been cleaned of leftover Next.js/React artifacts. The Astro +
 
 ## Recently Completed (2026-03-29)
 
+- Optimized Capabilities page hero section: removed radial gradient layers, removed `backdrop-blur-sm` from stat cards, shortened body copy from 75 to ~34 words (55% reduction), kept all 4 stat cards in a `grid-cols-2 sm:grid-cols-4` layout for mobile-first rendering.
+- Fixed broken DOM nesting in "Where It Fits" / "Use Cases" section — missing `</div>` closing tag for `lg:col-span-2` wrapper was causing grid misalignment.
 - Assigned unique semantic icons to Customization Layer cards on Capabilities page: `paintbrush` (Logo Printing), `fileText` (Size & Dimensions), `cog` (Material Selection), `palette` (Color Combinations), `gift` (Packaging & Finishing). Added `icon` field to `CUSTOMIZATION_OPTIONS` data in `site.ts`.
 
 ## Recently Completed (2026-03-28)
@@ -48,6 +50,7 @@ The repository has been cleaned of leftover Next.js/React artifacts. The Astro +
 
 | Date | Changes |
 |------|---------|
+| 2026-03-29 | Capabilities hero optimization: removed radial gradients + backdrop-blur, shortened copy 55%, kept 4 stat cards in 2-col mobile grid; fixed broken DOM in Use Cases section (missing </div>) |
 | 2026-03-29 | Capabilities page: assigned unique semantic icons to each Customization Layer card (paintbrush, fileText, cog, palette, gift) instead of repeated generic icon |
 | 2026-03-28 | Cloudflare Pages build config: set Bun as build tool via env vars (`SKIP_DEPENDENCY_INSTALL`, `BUN_VERSION`), documented `bun.lock` vs `bun.lockb` status |
 | 2026-03-28 | Dependency cleanup: removed unused `@astrojs/tailwind`, standardized package manager to Bun, updated memory bank docs |
