@@ -22,7 +22,7 @@ const sizeClasses = {
   href={getWhatsAppHref(message)}
   target="_blank"
   rel="noopener noreferrer"
-  class={`inline-flex items-center justify-center gap-2 bg-[var(--color-wa-green)] text-white font-semibold rounded-lg hover:bg-[var(--color-wa-green-hover)] active:bg-green-800 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-wa-green)] min-h-12 ${sizeClasses[size]} ${className}`}
+  class={`inline-flex items-center justify-center gap-2 bg-[var(--color-wa-green)] text-white font-semibold rounded-lg hover:bg-[var(--color-wa-green-hover)] active:bg-[var(--color-wa-green-active)] transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-wa-green)] min-h-12 ${sizeClasses[size]} ${className}`}
 >
   <Icon name="whatsapp" size={20} />
   {label}

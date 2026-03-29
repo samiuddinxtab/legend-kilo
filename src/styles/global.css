@@ -3,6 +3,7 @@
 :root {
   --color-wa-green: #25D366;
   --color-wa-green-hover: #1ebe5d;
+  --color-wa-green-active: #1a9e52;
 }
 
 @theme {
@@ -120,7 +121,7 @@
   }
 
   .btn-whatsapp:active {
-    background: #1a9e52;
+    background: var(--color-wa-green-active);
   }
 
   .card {
