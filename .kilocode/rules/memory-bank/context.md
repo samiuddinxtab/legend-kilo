@@ -8,6 +8,7 @@ The repository has been cleaned of leftover Next.js/React artifacts. The Astro +
 
 ## Recently Completed (2026-03-29)
 
+- Comprehensive color audit: Consolidated WhatsApp green across all components — WhatsAppButton.astro and global.css `btn-whatsapp` now use `var(--color-wa-green)` and `var(--color-wa-green-hover)` CSS variables. Added `btn-outline-dark` component in global.css for secondary CTAs on dark backgrounds (index, process, company, capabilities CTA sections) — fixed WCAG contrast issue where `btn-outline` on dark backgrounds had poor white border visibility. Removed `backdrop-blur-sm` from Header.astro (GPU-heavy, unnecessary). Restored missing WhatsApp and Call CTAs in contact.astro hero that were accidentally removed during Tailwind migration. Fixed invalid `border-neutral-200/70` in capabilities.astro to `border-neutral-300`.
 - Aligned contact.astro and InquiryWidget.astro to design system: removed scoped `<style>` blocks entirely (contact had 405 lines of custom CSS), replaced all hardcoded hex colors with Tailwind design tokens (neutral-900, brand-500, etc.), normalized spacing to Tailwind scale, replaced media queries with `sm:`/`lg:` prefixes, removed `font-family: 'Syne'` references. Added `--color-wa-green` and `--color-wa-green-hover` CSS variables to global.css as single-source-of-truth for WhatsApp brand color.
 - Rewrote InquiryWidget: WhatsApp-first lead capture architecture. Removed all `required` attributes, `pointer-events-none`, and `opacity-50` gating. Intent pills (Bulk Order/Custom Design/Sample Request) modify pre-fill message. Optional Name/Phone form fields. Collapsible "More details" section. Trust signals. All tap targets ≥44px. Phone input uses `inputmode="tel"`.
 - Optimized Capabilities page hero: removed radial gradients, removed `backdrop-blur-sm`, shortened copy 55%.
@@ -51,9 +52,8 @@ The repository has been cleaned of leftover Next.js/React artifacts. The Astro +
 
 | Date | Changes |
 |------|---------|
+| 2026-03-29 | Color audit: consolidated wa-green CSS variable, added btn-outline-dark for dark section CTAs, removed Header backdrop-blur, restored missing contact hero CTAs, fixed invalid border class in capabilities |
 | 2026-03-29 | Aligned contact.astro and InquiryWidget.astro to design system: removed scoped <style> blocks, replaced hardcoded hex with Tailwind tokens, added wa-green CSS variables to global.css |
-| 2026-03-29 | Rewrote InquiryWidget to WhatsApp-first lead capture: removed form gating (required/pointer-events-none/opacity), pre-rendered WhatsApp href, intent pills, optional fields, collapsible details, trust signals |
-| 2026-03-29 | Capabilities hero optimization: removed radial gradients + backdrop-blur, shortened copy 55%, kept 4 stat cards in 2-col mobile grid; fixed broken DOM in Use Cases section (missing </div>) |
 | 2026-03-29 | Capabilities page: assigned unique semantic icons to each Customization Layer card (paintbrush, fileText, cog, palette, gift) instead of repeated generic icon |
 | 2026-03-28 | Cloudflare Pages build config: set Bun as build tool via env vars (`SKIP_DEPENDENCY_INSTALL`, `BUN_VERSION`), documented `bun.lock` vs `bun.lockb` status |
 | 2026-03-28 | Dependency cleanup: removed unused `@astrojs/tailwind`, standardized package manager to Bun, updated memory bank docs |
