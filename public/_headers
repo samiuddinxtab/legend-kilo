@@ -1,8 +1,17 @@
+# ─────────────────────────────────────────────────────────────
+# SECURITY NOTE: unsafe-inline is required for script-src because
+# Astro generates inline <script> blocks (including define:vars).
+# Static sites cannot use nonces. This is an accepted tradeoff.
+# Re-evaluate if any third-party scripts are ever added.
+# ─────────────────────────────────────────────────────────────
+
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-src https://www.google.com/maps/; form-action 'none'; base-uri 'self'; object-src 'none'
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
@@ -10,8 +19,14 @@
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
 /sitemap.xml
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=3600
 
 /robots.txt
   Cache-Control: public, max-age=86400

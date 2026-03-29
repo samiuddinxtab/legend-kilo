@@ -7,8 +7,9 @@ import Icon from '../components/Icons.astro';
 ---
 
 <BaseLayout 
-  title="404 - Page Not Found | LEGEND INDUSTRIES"
-  description="The page you're looking for doesn't exist. Browse our capabilities or contact us for bulk bag manufacturing inquiries."
+  noindex={true}
+  title="Page Not Found | LEGEND INDUSTRIES"
+  description="The page you're looking for doesn't exist or has been moved. Browse our capabilities or contact us for bulk bag manufacturing inquiries."
 >
   <Header />
 
@@ -41,6 +42,10 @@ import Icon from '../components/Icons.astro';
             View Capabilities
             <Icon name="arrowRight" />
           </a>
+          <WhatsAppButton
+            message="Hi, I need help with bulk bag manufacturing or corporate gifting requirements."
+            label="Chat on WhatsApp"
+          />
         </div>
         
         <div class="mt-16 grid sm:grid-cols-3 gap-8 max-w-2xl mx-auto text-left">

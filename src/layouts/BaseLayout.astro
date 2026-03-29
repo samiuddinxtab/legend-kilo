@@ -4,11 +4,15 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
+  showFaq?: boolean;
 }
 
 const { 
   title = "LEGEND INDUSTRIES | Bulk Bag Manufacturing & Corporate Gifting — Hyderabad",
-  description = "Hyderabad-based bag manufacturing since 1998. Custom bags, jute & cotton eco bags, corporate gifting. Bulk orders, custom branding, PAN India supply. Built for reliability."
+  description = "Hyderabad-based bag manufacturing since 1998. Custom bags, jute & cotton eco bags, corporate gifting. Bulk orders, custom branding, PAN India supply. Built for reliability.",
+  noindex = false,
+  showFaq = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -21,7 +25,7 @@ const organizationSchema = {
   description: "Hyderabad-based bag manufacturing and corporate gifting company established in 1998. Specializing in bulk bag production, custom branding, and PAN India supply.",
   foundingDate: "1998",
   url: "https://legendindustries.in",
-  logo: "https://legendindustries.in/logo.png",
+  logo: "https://legendindustries.in/og-image.jpg",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Hyderabad",
@@ -192,19 +196,32 @@ const breadcrumbSchema = getBreadcrumbSchema(currentPath);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#c2410c" />
+    
+    <!-- Font Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="canonical" href={canonicalURL} />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&display=swap" /></noscript>
+    
+    <!-- NOTE: favicon.svg and apple-touch-icon.png must be added to /public before deployment -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <>
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={canonicalURL} />
+      </>
+    )}
     
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -213,12 +230,14 @@ const breadcrumbSchema = getBreadcrumbSchema(currentPath);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content="https://legendindustries.in/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:site" content="@legendindustries" />
     
     <!-- Google Bot -->
     <meta name="googlebot" content="index, follow" />
@@ -230,25 +249,10 @@ const breadcrumbSchema = getBreadcrumbSchema(currentPath);
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    {showFaq && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-
-    <!-- Cloudflare Web Analytics (replace YOUR_TOKEN with your actual beacon token) -->
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "YOUR_CLOUDFLARE_ANALYTICS_TOKEN"}'></script>
   </head>
   <body class="font-sans antialiased">
     <slot />
-    <script>
-      document.addEventListener('click', (e) => {
-        const link = (e.target as Element).closest('a');
-        if (!link) return;
-        const href = link.getAttribute('href') || '';
-        if (href.startsWith('https://wa.me/') || href.includes('wa.me')) {
-          (window as any).__cfBeacon?.send?.({ category: 'conversion', action: 'whatsapp_click' });
-        } else if (href.startsWith('mailto:')) {
-          (window as any).__cfBeacon?.send?.({ category: 'conversion', action: 'email_click' });
-        }
-      });
-    </script>
   </body>
 </html>

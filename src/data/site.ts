@@ -271,9 +271,8 @@ export const CUSTOMIZATION_OPTIONS = [
 
 export const CLIENT_TYPES = [
   {
-    icon: "paintbrush" as const,
-    title: "Logo Printing & Branding",
-    desc: "Screen printing, embroidery, heat transfer, and more. Your brand, prominently displayed.",
+    title: "Corporate Companies",
+    desc: "Employee kits, promotional products, and event giveaways for companies needing branded bulk orders.",
   },
   {
     title: "Distributors & Wholesalers",

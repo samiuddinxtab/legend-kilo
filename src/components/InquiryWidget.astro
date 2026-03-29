@@ -1,10 +1,15 @@
 ---
 import Icon from './Icons.astro';
-import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER, EMAIL_ADDRESS } from '../data/site';
+import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER } from '../data/site';
 
 const defaultMsg = "Hi, I need custom bags/corporate gifting solution. Can you help?";
 const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defaultMsg)}`;
 ---
+
+<div class="bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden">
+  <div class="px-5 pt-5 pb-4 border-b border-neutral-100">
+    <h2 class="text-sm font-bold text-neutral-900">Quick Inquiry</h2>
+  </div>
 
   <div class="px-5 pb-4">
     <p class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-[10px]">What are you looking for?</p>
@@ -22,15 +27,28 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
         <input
           id="inq-name"
           type="text"
+          maxlength="80"
           autocomplete="name"
           placeholder="e.g. Rahul Sharma"
           class="field-input"
         />
       </div>
+      <div class="flex flex-col gap-[6px]">
+        <label for="inq-phone" class="text-xs font-semibold text-neutral-600">Phone / WhatsApp</label>
+        <input
+          id="inq-phone"
+          type="tel"
+          maxlength="15"
+          autocomplete="tel"
+          placeholder="e.g. 9876543210"
+          class="field-input"
+        />
+      </div>
+    </div>
 
     <details class="border border-neutral-200 rounded-xl overflow-hidden" id="optional-details">
       <summary class="flex items-center gap-2 px-4 py-3 text-sm font-medium text-neutral-500 cursor-pointer list-none hover:bg-neutral-50 transition-colors select-none">
-        <svg class="w-3.5 h-3.5 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg class="w-3.5 h-3.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="6 9 12 15 18 9"/>
         </svg>
         Add more details
@@ -38,6 +56,20 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
       </summary>
 
       <div class="px-4 pb-4 pt-2 flex flex-col gap-[14px] border-t border-neutral-100 bg-neutral-50">
+        <div class="flex flex-col gap-[6px]">
+          <label for="inq-company" class="text-xs font-semibold text-neutral-600">
+            Company / Organization <span class="font-normal text-neutral-400">optional</span>
+          </label>
+          <input
+            id="inq-company"
+            type="text"
+            maxlength="80"
+            autocomplete="organization"
+            placeholder="e.g. Acme Corp"
+            class="field-input"
+          />
+        </div>
+
         <div class="flex flex-col gap-[6px]">
           <label for="inq-product" class="text-xs font-semibold text-neutral-600">
             Product Category <span class="font-normal text-neutral-400">optional</span>
@@ -68,7 +100,8 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
           </label>
           <textarea
             id="inq-details"
-            rows={3}
+            rows={4}
+            maxlength="300"
             placeholder="Material, branding, delivery city, timeline..."
             class="field-input resize-none min-h-[80px] leading-relaxed"
           ></textarea>
@@ -110,21 +143,14 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
 <script define:vars={{ whatsappNumber: WHATSAPP_NUMBER }}>
   const sendBtn = document.getElementById('send-whatsapp-btn');
   const chips = document.querySelectorAll('.chip');
-  const intentBtns = document.querySelectorAll('.intent-btn');
   const nameInput = document.getElementById('inq-name');
   const phoneInput = document.getElementById('inq-phone');
+  const companyInput = document.getElementById('inq-company');
   const productSelect = document.getElementById('inq-product');
   const quantitySelect = document.getElementById('inq-quantity');
   const detailsTextarea = document.getElementById('inq-details');
 
   let activeCategory = 'Custom Bags';
-  let activeIntent = 'Bulk Order';
-
-  const intentPhrasing = {
-    'Bulk Order': 'I need bulk',
-    'Sample': 'I need a sample of',
-    'Custom Design': 'I want custom',
-  };
 
   chips.forEach((chip) => {
     chip.addEventListener('click', () => {
@@ -135,68 +161,72 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
       chip.classList.add('chip--active');
       chip.setAttribute('aria-pressed', 'true');
       activeCategory = chip.dataset.intent || 'Custom Bags';
-      updateSendButton();
-    });
-  });
-
-  intentBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      intentBtns.forEach((b) => {
-        b.classList.remove('intent-btn--active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      btn.classList.add('intent-btn--active');
-      btn.setAttribute('aria-pressed', 'true');
-      activeIntent = btn.dataset.intent || 'Bulk Order';
-      updateSendButton();
+      debouncedUpdate();
     });
   });
 
   function buildMessage() {
     const name = nameInput?.value.trim() || '';
     const phone = phoneInput?.value.trim() || '';
+    const company = companyInput?.value.trim() || '';
     const product = productSelect?.value || '';
     const quantity = quantitySelect?.value || '';
     const details = detailsTextarea?.value.trim() || '';
 
-    const phrase = intentPhrasing[activeIntent] || intentPhrasing['Bulk Order'];
-    const cat = activeCategory.toLowerCase();
-    let msg = 'Hi, ' + phrase + ' ' + cat + '.';
-
-    if (name) msg += ' My name is ' + name + '.';
-    if (phone) msg += ' Reach me on ' + phone + '.';
-    if (product) msg += ' Specifically ' + product + '.';
-    if (quantity) msg += ' Around ' + quantity + '.';
+    // Newlines are preserved by encodeURIComponent — \n becomes %0A in the URL
+    let msg = `Hi, I need custom bags/corporate gifting solution. Can you help?\n\n`;
+    if (name) msg += `Name: ${name}\n`;
+    if (phone) msg += `Phone: ${phone}\n`;
+    if (company) msg += `Company: ${company}\n`;
+    if (product) msg += `Product: ${product}\n`;
+    if (quantity) msg += `Quantity: ${quantity}\n`;
     if (details) {
-      const capped = details.substring(0, 120);
-      msg += ' ' + capped + (details.length > 120 ? '...' : '');
+      const capped = details.substring(0, 300);
+      msg += `Notes: ${capped}\n`;
     }
 
-    msg += ' Can you help?';
     return msg;
+  }
+
+  let debounceTimer;
+  function debouncedUpdate() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(updateSendButton, 150);
   }
 
   function updateSendButton() {
     if (!sendBtn) return;
     const msg = buildMessage();
-    const url = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(msg);
-    sendBtn.href = url;
+    const encoded = encodeURIComponent(msg);
+
+    // WhatsApp has a ~3800 char URL limit; truncate details further if needed
+    let truncated = encoded;
+    const base = `https://wa.me/${whatsappNumber}?text=`;
+    if (encoded.length > 3800 - base.length) {
+      const allowed = 3800 - base.length;
+      let safe = msg;
+      while (encodeURIComponent(safe).length > allowed) {
+        safe = safe.slice(0, -50);
+      }
+      truncated = encodeURIComponent(safe);
+    }
+
+    sendBtn.href = base + truncated;
   }
 
   sendBtn?.addEventListener('click', (e) => {
     if (!sendBtn.href) {
       e.preventDefault();
-      const msg = buildMessage();
-      sendBtn.href = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(msg);
+      updateSendButton();
       window.open(sendBtn.href, '_blank', 'noopener,noreferrer');
     }
   });
 
-  [nameInput, phoneInput, detailsTextarea].forEach((el) => {
-    el?.addEventListener('input', updateSendButton);
+  [nameInput, phoneInput, companyInput, detailsTextarea].forEach((el) => {
+    el?.addEventListener('input', debouncedUpdate);
   });
   [productSelect, quantitySelect].forEach((el) => {
-    el?.addEventListener('change', updateSendButton);
+    el?.addEventListener('change', debouncedUpdate);
   });
 
   updateSendButton();
@@ -223,13 +253,5 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
 
   .chip--active {
     @apply border-brand-500 text-brand-700 bg-brand-50;
-  }
-
-  .intent-btn {
-    @apply px-3 py-1.5 text-xs font-medium text-neutral-500 bg-transparent border-none rounded-md cursor-pointer transition-colors hover:text-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-400;
-  }
-
-  .intent-btn--active {
-    @apply text-brand-600 font-semibold;
   }
 </style>
