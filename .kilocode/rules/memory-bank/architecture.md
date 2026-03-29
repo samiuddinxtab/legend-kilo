@@ -52,7 +52,6 @@ Tailwind CSS v4 with `@theme` for:
 - 8px grid spacing via Tailwind utilities
 
 ### 4. SEO via Metadata API + JSON-LD
-- Next.js Metadata API for page-level SEO
 - JSON-LD schemas in layout.tsx (Organization, LocalBusiness, FAQPage)
 - robots.txt + sitemap.xml in public/
 
@@ -69,9 +68,11 @@ Tailwind CSS v4 with `@theme` for:
 
 ### InquiryWidget
 Self-contained component with:
+- Client name input
 - Company name input
 - Product category dropdown
 - Quantity range dropdown
+- Expected delivery timeline
 - Optional details textarea
 - WhatsApp + Email buttons (enabled only when required fields filled)
 

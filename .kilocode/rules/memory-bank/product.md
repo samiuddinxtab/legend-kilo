@@ -8,9 +8,9 @@ LEGEND INDUSTRIES needs a web presence that does three things: filter bad leads,
 
 1. **Lead Quality**: Explicit qualification section filters out retail/small buyers
 2. **Standardization**: Company info, process, and capabilities shown once — no repetition
-3. **Conversion**: WhatsApp-first approach reduces friction for B2B buyers
+3. **Conversion**: WhatsApp-first approach reduces friction for buyers
 4. **Credibility**: Professional web presence since 1998, structured data for SEO
-5. **Efficiency**: Pre-filled messages contain structured info (company, product, quantity)
+5. **Efficiency**: Pre-filled messages contain structured info (company, product, quantity, etc)
 
 ## User Flow
 
@@ -31,9 +31,11 @@ LEGEND INDUSTRIES needs a web presence that does three things: filter bad leads,
 ## Conversion Mechanism
 
 The InquiryWidget collects:
+- Client name
 - Company name
 - Product category (dropdown)
 - Quantity range (dropdown)
+- Expected delivery timeline (dropdown)
 - Optional details
 
 These generate a structured pre-filled message for WhatsApp or email. No server-side processing, no database, no forms to manage.

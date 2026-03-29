@@ -18,16 +18,16 @@ import { CAPABILITIES, QUALIFICATION_POINTS, NOT_A_FIT, FAQS } from '../data/sit
       <div class="container-site section-padding">
         <div class="max-w-3xl">
           <span class="inline-block text-sm font-semibold tracking-widest uppercase text-brand-400 mb-4">
-            Bulk Bag Manufacturing &middot; Since 1998
+            Bag Manufacturing &middot; Since 1998
           </span>
           <h1 id="hero-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6">
             Custom Bags & Corporate Products,{" "}
             <span class="text-brand-400">Built for Business.</span>
           </h1>
           <p class="text-lg sm:text-xl text-neutral-300 leading-relaxed mb-8 max-w-2xl">
-            LEGEND INDUSTRIES manufactures custom bags and corporate gifting
-            items in bulk. Full customization, reliable delivery, PAN India
-            supply. We work with businesses, not individual buyers.
+            LEGEND INDUSTRIES manufactures custom bags and offers custom gifting solution.
+            Full customization, reliable delivery, PAN India
+            supply.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <a href="/capabilities" class="btn-primary">
@@ -35,62 +35,20 @@ import { CAPABILITIES, QUALIFICATION_POINTS, NOT_A_FIT, FAQS } from '../data/sit
               <Icon name="arrowRight" />
             </a>
             <WhatsAppButton
-              message="Hi, I'm interested in bulk bag manufacturing from LEGEND INDUSTRIES. Please share details on products and pricing."
+              message="Hi, I'm interested in bag manufacturing from LEGEND INDUSTRIES. Please share details on products and pricing."
               label="Quick Inquiry"
             />
           </div>
         </div>
         <div class="mt-8 rounded-xl border border-brand-200 bg-white p-5 sm:p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
           <div>
-            <p class="text-sm font-semibold text-neutral-900">Qualified B2B requirement?</p>
+            <p class="text-sm font-semibold text-neutral-900">Do you have any requirement?</p>
             <p class="text-sm text-neutral-600">Send your category + quantity now to receive MOQ and pricing guidance.</p>
           </div>
           <WhatsAppButton
-            message="Hi, we have a qualified B2B requirement. Please help us with MOQ, pricing slabs, and delivery timeline."
+            message="Hi, we have a requirement. Please help us with MOQ, pricing slabs, and delivery timeline."
             label="Share Requirement on WhatsApp"
           />
-        </div>
-      </div>
-    </section>
-
-    {/* Qualification / Filter */}
-    <section aria-labelledby="qualification-heading" class="section-padding bg-brand-50 border-y border-brand-100">
-      <div class="container-site">
-        <SectionHeader
-          label="Before You Proceed"
-          title="Qualification Check: Are We the Right Manufacturing Partner?"
-          description="This helps both teams save time. If your requirement is B2B + bulk + branding, we can move quickly."
-        />
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-white rounded-xl p-6 sm:p-8 border border-neutral-200">
-            <h3 id="qualification-heading" class="text-lg font-bold text-neutral-900 mb-4 flex items-center gap-2">
-              <Icon name="checkCircle" class="text-green-600" />
-              You&apos;re a good fit if:
-            </h3>
-            <ul class="space-y-3">
-              {QUALIFICATION_POINTS.map((point) => (
-                <li class="flex items-start gap-3 text-neutral-700">
-                  <Icon name="checkCircle" class="text-green-600 shrink-0 mt-0.5" />
-                  <span class="text-sm leading-relaxed">{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div class="bg-white rounded-xl p-6 sm:p-8 border border-neutral-200">
-            <h3 class="text-lg font-bold text-neutral-900 mb-4">
-              Likely not the right fit if:
-            </h3>
-            <ul class="space-y-3">
-              {NOT_A_FIT.map((point) => (
-                <li class="flex items-start gap-3">
-                  <Icon name="xCircle" class="text-neutral-400 shrink-0 mt-0.5" />
-                  <span class="text-sm text-neutral-600 leading-relaxed">
-                    {point}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </section>
@@ -141,11 +99,11 @@ import { CAPABILITIES, QUALIFICATION_POINTS, NOT_A_FIT, FAQS } from '../data/sit
         />
         <ol class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 list-none p-0 m-0">
           {[
-            { step: "01", title: "Share Requirement", desc: "Product type, quantity, branding needs via WhatsApp or email." },
-            { step: "02", title: "Discuss Options", desc: "We review and discuss material, design, and pricing options." },
-            { step: "03", title: "Sample / Approval", desc: "Design or sample approval before production begins." },
-            { step: "04", title: "Production", desc: "Bulk manufacturing with quality checks at every stage." },
-            { step: "05", title: "Delivery", desc: "Dispatched within committed 1–3 week timeline." },
+            { step: "01", title: "Share Requirement", desc: "You share product type, quantity and branding needs." },
+            { step: "02", title: "Discuss Options", desc: "We review and discuss material, design, and pricing." },
+            { step: "03", title: "Sample / Approval", desc: "Design and sample approval before production." },
+            { step: "04", title: "Production", desc: "Quality-controlled manufacturing begins." },
+            { step: "05", title: "Delivery", desc: "Dispatched within committed timeline." },
           ].map((item, index) => (
             <li class="text-center relative">
               <div
@@ -217,7 +175,7 @@ import { CAPABILITIES, QUALIFICATION_POINTS, NOT_A_FIT, FAQS } from '../data/sit
           <TestimonialCard
             quote="Vast variety to choose from — Impeccable Quality at a very reasonable Pricing. Delivered at a Short notice. Thanks. Genuinely recommended."
             name="Dr. Khizer Hussain Junaidy"
-            subtitle="Local Guide · 77 reviews"
+            subtitle="Director of Caspian Healthcare, Hyderabad."
           />
         </div>
       </div>

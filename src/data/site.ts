@@ -37,7 +37,7 @@ export const SITE_URL = "https://legendindustries.in";
 
 export const LOCATIONS = [
   {
-    name: "LEGEND INDUSTRIES BAG MANUFACTURERS (Office)",
+    name: "LEGEND INDUSTRIES (Retail/Office)",
     address: "VN Plaza, 10-3-773/2, Vijaynagar Colony, Masab Tank, Hyderabad, Telangana 500057",
     mapsUrl: "https://maps.app.goo.gl/ppFxYiXzBsNmtgmR9",
     embedQuery: "VN Plaza, 10-3-773/2, Vijaynagar Colony, Masab Tank, Hyderabad, Telangana 500057",
@@ -74,18 +74,15 @@ export const CAPABILITIES = [
 ] as const;
 
 export const QUALIFICATION_POINTS = [
-  "You need B2B quantities (typically 100+ units)",
+  "You need bulk quantities (typically 100+ units)",
   "You require custom branding or design",
   "You represent a company, institution, or distributor",
-  "You need reliable, repeat supply",
-  "Your budget aligns with custom manufacturing (typically ₹50k+ project value)",
 ] as const;
 
 export const NOT_A_FIT = [
   "Looking for 1–10 pieces for personal use",
   "Want the cheapest price regardless of quality",
   "One-time retail purchase",
-  "No branding or customization needed",
 ] as const;
 
 export const FAQS = [
@@ -182,7 +179,7 @@ export const PROCESS_STEPS = [
     details: [
       "Products packed per specifications",
       "Final count and quality verification",
-      "Dispatched within 1–3 week timeline",
+      "Dispatched within the committed timeline",
       "Delivery tracking and confirmation",
     ],
   },
@@ -197,7 +194,7 @@ export const PRODUCT_OPTIONS = [
 ] as const;
 
 export const QUANTITY_OPTIONS = [
-  "100–300 units (starter B2B)",
+  "100–300 units",
   "300–1,000 units",
   "1,000–5,000 units",
   "5,000+ units",
@@ -274,8 +271,9 @@ export const CUSTOMIZATION_OPTIONS = [
 
 export const CLIENT_TYPES = [
   {
-    title: "Corporate Companies",
-    desc: "Employee kits, onboarding packages, branded merchandise, and promotional items for internal and external use.",
+    icon: "paintbrush" as const,
+    title: "Logo Printing & Branding",
+    desc: "Screen printing, embroidery, heat transfer, and more. Your brand, prominently displayed.",
   },
   {
     title: "Distributors & Wholesalers",
@@ -293,12 +291,12 @@ export const CLIENT_TYPES = [
 
 export const WHY_CHOOSE = [
   "Consistent production quality across every order",
-  "Reliable delivery timelines — 1 to 3 weeks",
-  "Strong experience in custom and bulk orders",
+  "Reliable delivery timelines — typically 1 to 3 weeks",
+  "Strong experience in customization and bulk orders",
   "Direct factory-level manufacturing",
   "Suitable for repeat and long-term business",
   "PAN India supply capability",
-  "Full customization — logo to complete design",
+  "Full customization — from logo to complete design",
   "Structured quality checks before dispatch",
 ] as const;
 

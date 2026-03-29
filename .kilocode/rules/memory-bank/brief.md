@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Corporate website for LEGEND INDUSTRIES, a Hyderabad-based bag manufacturing and corporate gifting business established in 1998. The website's primary goal is to filter bad leads and convert high-quality B2B buyers through a WhatsApp-first, no-forms conversion flow.
+Corporate website for LEGEND INDUSTRIES, a Hyderabad-based bag manufacturing and corporate gifting business established in 1998. The website's primary goal is to filter bad leads and convert high-quality buyers through a WhatsApp-first, no-forms conversion flow.
 
 ## Target Users
 
@@ -24,12 +24,13 @@ Corporate website for LEGEND INDUSTRIES, a Hyderabad-based bag manufacturing and
 
 ### Must Have
 
-- Filter bad/small/irrelevant leads
+- Filter bad/very small/irrelevant leads
 - WhatsApp-first conversion (no traditional forms)
-- Pre-filled message generation
+- Fully Pre-filled message generation
 - Mobile-first responsive design
 - Fast loading, minimal JS
 - SEO optimized (structured data, meta tags, sitemap)
+- Highly AI crawlable
 
 ### Design Philosophy
 
@@ -41,7 +42,7 @@ Corporate website for LEGEND INDUSTRIES, a Hyderabad-based bag manufacturing and
 
 ### Technical
 
-- Next.js 16 with App Router
+- Astro
 - TypeScript strict mode
 - Tailwind CSS 4
 - All Server Components except interactive elements
@@ -60,7 +61,7 @@ Corporate website for LEGEND INDUSTRIES, a Hyderabad-based bag manufacturing and
 
 ## Constraints
 
-- WhatsApp number is placeholder (919052088880) — needs real number
-- Email is placeholder (legendindustries92@gmail.com)
+- WhatsApp number is (919052088880) — needs real number
+- Email is (legendindustries92@gmail.com)
 - No actual product images (icon-driven design)
-- No blog/content section yet (future addition)
+- No spam/low quality blog/content
