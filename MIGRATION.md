@@ -1,5 +1,22 @@
 # LEGEND INDUSTRIES — Front-End Optimization & Migration Report
 
+## Current Stack (Post-Migration)
+
+The project has been migrated to **Astro v5**, moving away from Next.js for a more optimized, static-first delivery model.
+
+- **Frontend**: Astro v5 (Static Output)
+- **Styling**: Tailwind CSS v4 (PostCSS)
+- **Language**: TypeScript (Strict Mode)
+- **Runtime**: Bun
+- **Data Layer**: Centralized in `src/data/site.ts`
+- **Hosting**: Cloudflare Pages
+- **Optimization**: Standardized SVG icons, accessible semantic HTML, and pre-rendered JSON-LD schemas.
+
+---
+
+> [!NOTE]
+> The sections below document historical issues identified and fixed during the Next.js optimization phase. They are retained for architectural context.
+
 ## Audit Summary
 
 The LEGEND INDUSTRIES website was built with a modern stack (Next.js 16, React 19, TypeScript, Tailwind CSS 4). However, the audit identified several issues across performance, accessibility, code organization, and test coverage.

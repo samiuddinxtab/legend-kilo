@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { WHATSAPP_NUMBER, EMAIL_ADDRESS, PHONE_TEL, LOCATIONS } from '../data/site.ts';
 
 interface Props {
   title?: string;
@@ -24,14 +25,25 @@ const organizationSchema = {
   name: "LEGEND INDUSTRIES",
   description: "Hyderabad-based bag manufacturing and corporate gifting company established in 1998. Specializing in bulk bag production, custom branding, and PAN India supply.",
   foundingDate: "1998",
-  url: "https://legendindustries.in",
-  logo: "https://legendindustries.in/og-image.jpg",
+  url: "https://legendindustry.in",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://legendindustry.in/og-image.jpg",
+    width: 1200,
+    height: 630,
+  },
   address: {
     "@type": "PostalAddress",
     addressLocality: "Hyderabad",
     addressRegion: "Telangana",
     addressCountry: "IN",
   },
+  telephone: PHONE_TEL,
+  email: EMAIL_ADDRESS,
+  sameAs: [
+    `https://wa.me/${WHATSAPP_NUMBER}`,
+    ...LOCATIONS.map(loc => loc.mapsUrl)
+  ],
   areaServed: {
     "@type": "Country",
     name: "India",
@@ -61,8 +73,34 @@ const localBusinessSchema = {
     latitude: "17.3850",
     longitude: "78.4867",
   },
+  telephone: PHONE_TEL,
+  email: EMAIL_ADDRESS,
+  hasMap: LOCATIONS[0].mapsUrl,
   priceRange: "$$",
-  openingHours: "Mo-Sa 09:00-18:00",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      opens: "09:00",
+      closes: "22:00"
+    }
+  ],
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "LEGEND INDUSTRIES",
+  url: "https://legendindustry.in",
+  description: description,
+  inLanguage: "en-IN",
 };
 
 const faqSchema = {
@@ -154,18 +192,20 @@ const productSchema = {
     "@type": "Offer",
     priceCurrency: "INR",
     availability: "https://schema.org/InStock",
-    url: "https://legendindustries.in/capabilities",
+    url: "https://legendindustry.in/capabilities",
   },
 };
 
 function getBreadcrumbSchema(urlPath: string) {
   const pathParts = urlPath.split('/').filter(Boolean);
+  if (pathParts.length === 0) return null;
+
   const items = [
     {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://legendindustries.in/",
+      item: "https://legendindustry.in/",
     },
   ];
   
@@ -176,7 +216,7 @@ function getBreadcrumbSchema(urlPath: string) {
       "@type": "ListItem",
       position: index + 2,
       name: part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
-      item: `https://legendindustries.in${currentPath}`,
+      item: `https://legendindustry.in${currentPath}`,
     });
   });
   
@@ -205,9 +245,9 @@ const breadcrumbSchema = getBreadcrumbSchema(currentPath);
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&display=swap" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap&display=swap" /></noscript>
     
-    <!-- NOTE: favicon.svg and apple-touch-icon.png must be added to /public before deployment -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" hreflang="en-IN" href={canonicalURL} />
     
     <!-- Primary Meta Tags -->
     <title>{title}</title>
@@ -230,7 +270,8 @@ const breadcrumbSchema = getBreadcrumbSchema(currentPath);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content="https://legendindustries.in/og-image.jpg" />
+    <meta property="og:image" content="https://legendindustry.in/og-image.jpg" />
+    <meta property="og:image:alt" content="LEGEND INDUSTRIES — Custom Bags & Corporate Gifting, Hyderabad" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     
@@ -238,6 +279,7 @@ const breadcrumbSchema = getBreadcrumbSchema(currentPath);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://legendindustry.in/og-image.jpg" />
     
     <!-- Google Bot -->
     <meta name="googlebot" content="index, follow" />
@@ -248,9 +290,10 @@ const breadcrumbSchema = getBreadcrumbSchema(currentPath);
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
     {showFaq && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
   </head>
   <body class="font-sans antialiased">
     <slot />

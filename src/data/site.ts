@@ -33,7 +33,7 @@ export const EMAIL_ADDRESS = "legendindustries92@gmail.com";
 export const PHONE_NUMBER = "+91 90520 88880";
 export const PHONE_TEL = "+919052088880";
 
-export const SITE_URL = "https://legendindustries.in";
+export const SITE_URL = "https://legendindustry.in";
 
 export const LOCATIONS = [
   {

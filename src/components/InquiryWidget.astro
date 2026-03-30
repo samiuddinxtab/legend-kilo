@@ -31,6 +31,8 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
           autocomplete="name"
           placeholder="e.g. Rahul Sharma"
           class="field-input"
+          required
+          aria-required="true"
         />
       </div>
       <div class="flex flex-col gap-[6px]">
@@ -109,7 +111,7 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
       </div>
     </details>
 
-    <p class="text-xs text-neutral-400 text-center">Want to add more details first? Expand above.</p>
+    <p id="expand-hint" class="text-xs text-neutral-400 text-center">Want to add more details first? Expand above.</p>
 
     <a
       id="send-whatsapp-btn"
@@ -149,8 +151,10 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
   const productSelect = document.getElementById('inq-product');
   const quantitySelect = document.getElementById('inq-quantity');
   const detailsTextarea = document.getElementById('inq-details');
+  const detailsElement = document.getElementById('optional-details');
+  const expandHint = document.getElementById('expand-hint');
 
-  let activeCategory = 'Custom Bags';
+  let activeCategory = 'Customized Bags';
 
   chips.forEach((chip) => {
     chip.addEventListener('click', () => {
@@ -175,6 +179,7 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
 
     // Newlines are preserved by encodeURIComponent — \n becomes %0A in the URL
     let msg = `Hi, I need custom bags/corporate gifting solution. Can you help?\n\n`;
+    msg += `Category: ${activeCategory}\n`;
     if (name) msg += `Name: ${name}\n`;
     if (phone) msg += `Phone: ${phone}\n`;
     if (company) msg += `Company: ${company}\n`;
@@ -187,6 +192,14 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
 
     return msg;
   }
+
+  function updateHintVisibility() {
+    if (!expandHint || !detailsElement) return;
+    expandHint.style.display = detailsElement.open ? 'none' : 'block';
+  }
+
+  detailsElement?.addEventListener('toggle', updateHintVisibility);
+  updateHintVisibility();
 
   let debounceTimer;
   function debouncedUpdate() {

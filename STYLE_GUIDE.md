@@ -21,7 +21,7 @@
 
 ### Typography
 
-- **Font**: Inter (via `next/font/google`)
+- **Font**: Inter — loaded via Google Fonts CDN with <link rel="preload"> pattern in BaseLayout.astro. Not using next/font. Fallback: system-ui, -apple-system, sans-serif.
 - **Headings**: Bold, tight tracking
   - `h1`: `text-3xl` → `sm:text-4xl` → `lg:text-5xl`
   - `h2`: `text-2xl` → `sm:text-3xl` → `lg:text-4xl`

@@ -33,14 +33,17 @@ const { article } = Astro.props as { article: Article };
 
 const title = `${article.title} | LEGEND INDUSTRIES Blog`;
 const description = article.description || '';
+const articleUrl = `https://legendindustry.in/blog/${article.slug}`;
 
 const articleSchema = {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   headline: article.title,
   description: article.description,
   articleBody: article.content,
   datePublished: article.datePublished || article.date,
+  dateModified: article.datePublished || article.date,
+  image: "https://legendindustry.in/og-image.jpg",
   keywords: Array.isArray(article.keywords) ? article.keywords.join(', ') : '',
   author: {
     "@type": "Person",
@@ -49,14 +52,11 @@ const articleSchema = {
   publisher: {
     "@type": "Organization",
     name: "LEGEND INDUSTRIES",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://legendindustries.in/og-image.jpg",
-    },
+    url: "https://legendindustry.in",
   },
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": `https://legendindustries.in/blog/${article.slug}`,
+    "@id": articleUrl,
   },
 };
 ---
