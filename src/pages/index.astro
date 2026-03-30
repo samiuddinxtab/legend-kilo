@@ -92,6 +92,7 @@ import { CAPABILITIES, QUALIFICATION_POINTS, NOT_A_FIT, FAQS } from '../data/sit
           title="Simple, Structured Process"
           description="No confusion. Share your requirement, we handle the rest."
           align="center"
+          id="process-heading"
         />
         <ol class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 list-none p-0 m-0">
           {[
@@ -108,10 +109,10 @@ import { CAPABILITIES, QUALIFICATION_POINTS, NOT_A_FIT, FAQS } from '../data/sit
               >
                 {item.step}
               </div>
-              <h4 class="font-semibold text-neutral-900 mb-1">
+              <h3 class="font-semibold text-neutral-900 mb-1">
                 <span class="sr-only">Step {item.step}: </span>
                 {item.title}
-              </h4>
+              </h3>
               <p class="text-xs text-neutral-600 leading-relaxed">
                 {item.desc}
               </p>

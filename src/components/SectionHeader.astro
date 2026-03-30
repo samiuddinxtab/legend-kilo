@@ -5,16 +5,17 @@ interface Props {
   description?: string;
   align?: "left" | "center";
   class?: string;
+  id?: string;
 }
 
-const { label, title, description, align = "left", class: className = "" } = Astro.props;
+const { label, title, description, align = "left", class: className = "", id } = Astro.props;
 
 const alignClass = align === "center" ? "text-center mx-auto" : "";
 ---
 
 <div class={`mb-12 lg:mb-16 ${alignClass} ${className}`}>
   <span class="section-label">{label}</span>
-  <h2 class="section-title mt-3">{title}</h2>
+  <h2 id={id} class="section-title mt-3">{title}</h2>
   {description && (
     <p class={`section-desc mt-4 ${align === "center" ? "mx-auto" : ""}`}>
       {description}

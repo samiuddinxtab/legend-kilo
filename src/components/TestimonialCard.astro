@@ -11,7 +11,7 @@ const { quote, name, subtitle } = Astro.props;
 ---
 
 <figure class="card bg-neutral-900 text-white border-neutral-800">
-  <div class="flex items-center gap-1 mb-4" aria-label="5 out of 5 stars">
+  <div class="flex items-center gap-1 mb-4" role="img" aria-label="5 out of 5 stars">
     {[...Array(5)].map(() => (
       <Icon name="star" class="text-yellow-400" />
     ))}
