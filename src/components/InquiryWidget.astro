@@ -2,21 +2,19 @@
 import Icon from './Icons.astro';
 import { PRODUCT_OPTIONS, QUANTITY_OPTIONS, WHATSAPP_NUMBER } from '../data/site';
 
-const defaultMsg = "Hi, I need custom bags/corporate gifting solution. Can you help?";
-const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defaultMsg)}`;
 ---
 
 <div class="bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden">
-  <div class="px-5 pt-5 pb-4 border-b border-neutral-100">
-    <h2 class="text-sm font-bold text-neutral-900">Quick Inquiry</h2>
+  <div class="px-5 pt-5 pb-4">
+    <h2 class="text-base font-semibold text-neutral-900">Get a Quick Quote</h2>
+    <p class="text-sm text-neutral-500 mt-0.5">Select what you need</p>
   </div>
 
   <div class="px-5 pb-4">
-    <p class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-[10px]">What are you looking for?</p>
-    <div class="flex flex-wrap gap-2" role="group" aria-label="Product category">
+    <div class="flex flex-wrap justify-center gap-3" role="group" aria-label="Product category">
       <button type="button" class="chip chip--active" data-intent="Customized Bags" aria-pressed="true">Customized Bags</button>
       <button type="button" class="chip" data-intent="Eco Bags" aria-pressed="false">Eco Bags</button>
-      <button type="button" class="chip" data-intent="Corporate Gifting/Promotional Items" aria-pressed="false">Corporate Gifting/Promotional Items</button>
+      <button type="button" class="chip" data-intent="Corporate Gifting" aria-pressed="false">Corporate Gifting</button>
     </div>
   </div>
 
@@ -33,7 +31,9 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
           class="field-input"
           required
           aria-required="true"
+          aria-describedby="inq-name-error"
         />
+        <p id="inq-name-error" class="field-error" aria-live="polite" hidden>Please enter your name to continue.</p>
       </div>
       <div class="flex flex-col gap-[6px]">
         <label for="inq-phone" class="text-xs font-semibold text-neutral-600">Phone / WhatsApp</label>
@@ -115,7 +115,7 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
 
     <a
       id="send-whatsapp-btn"
-      href={waHref}
+      href="#"
       target="_blank"
       rel="noopener noreferrer"
       class="btn-whatsapp w-full justify-center py-2.5 text-sm"
@@ -146,6 +146,7 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
   const sendBtn = document.getElementById('send-whatsapp-btn');
   const chips = document.querySelectorAll('.chip');
   const nameInput = document.getElementById('inq-name');
+  const nameError = document.getElementById('inq-name-error');
   const phoneInput = document.getElementById('inq-phone');
   const companyInput = document.getElementById('inq-company');
   const productSelect = document.getElementById('inq-product');
@@ -156,6 +157,13 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
 
   let activeCategory = 'Customized Bags';
 
+  // Maps data-intent value to a human opening line
+  const openingLines = {
+    'Customized Bags': "Hi, I'm interested in customized bags.",
+    'Eco Bags': "Hi, I'm interested in eco-friendly bags.",
+    'Corporate Gifting': "Hi, I'm looking for corporate gifting solutions.",
+  };
+
   chips.forEach((chip) => {
     chip.addEventListener('click', () => {
       chips.forEach((c) => {
@@ -164,7 +172,7 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
       });
       chip.classList.add('chip--active');
       chip.setAttribute('aria-pressed', 'true');
-      activeCategory = chip.dataset.intent || 'Custom Bags';
+      activeCategory = chip.dataset.intent || 'Customized Bags';
       debouncedUpdate();
     });
   });
@@ -177,21 +185,38 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
     const quantity = quantitySelect?.value || '';
     const details = detailsTextarea?.value.trim() || '';
 
+    const opening = openingLines[activeCategory] ?? "Hi, I'm interested in your products.";
+
     // Newlines are preserved by encodeURIComponent — \n becomes %0A in the URL
-    let msg = `Hi, I need custom bags/corporate gifting solution. Can you help?\n\n`;
+    let msg = `${opening}\n\n`;
     msg += `Category: ${activeCategory}\n`;
     if (name) msg += `Name: ${name}\n`;
     if (phone) msg += `Phone: ${phone}\n`;
     if (company) msg += `Company: ${company}\n`;
     if (product) msg += `Product: ${product}\n`;
     if (quantity) msg += `Quantity: ${quantity}\n`;
-    if (details) {
-      const capped = details.substring(0, 300);
-      msg += `Notes: ${capped}\n`;
-    }
+    if (details) msg += `Notes: ${details}\n`;
 
     return msg;
   }
+
+  function showNameError() {
+    if (!nameError || !nameInput) return;
+    nameError.hidden = false;
+    nameInput.classList.add('field-input--error');
+    nameInput.focus();
+  }
+
+  function clearNameError() {
+    if (!nameError || !nameInput) return;
+    nameError.hidden = true;
+    nameInput.classList.remove('field-input--error');
+  }
+
+  nameInput?.addEventListener('input', () => {
+    if (nameInput.value.trim()) clearNameError();
+    debouncedUpdate();
+  });
 
   function updateHintVisibility() {
     if (!expandHint || !detailsElement) return;
@@ -212,9 +237,9 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
     const msg = buildMessage();
     const encoded = encodeURIComponent(msg);
 
-    // WhatsApp has a ~3800 char URL limit; truncate details further if needed
-    let truncated = encoded;
+    // WhatsApp has a ~3800 char URL limit; truncate if needed
     const base = `https://wa.me/${whatsappNumber}?text=`;
+    let truncated = encoded;
     if (encoded.length > 3800 - base.length) {
       const allowed = 3800 - base.length;
       let safe = msg;
@@ -228,14 +253,16 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
   }
 
   sendBtn?.addEventListener('click', (e) => {
-    if (!sendBtn.href) {
+    const name = nameInput?.value.trim() || '';
+    if (!name) {
       e.preventDefault();
-      updateSendButton();
-      window.open(sendBtn.href, '_blank', 'noopener,noreferrer');
+      showNameError();
+      return;
     }
+    clearNameError();
   });
 
-  [nameInput, phoneInput, companyInput, detailsTextarea].forEach((el) => {
+  [phoneInput, companyInput, detailsTextarea].forEach((el) => {
     el?.addEventListener('input', debouncedUpdate);
   });
   [productSelect, quantitySelect].forEach((el) => {
@@ -293,9 +320,9 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
   }
 
   .chip {
-    padding: 0.5rem 1rem;
+    padding: 0.625rem 1.25rem;
     min-height: 44px;
-    border: 1px solid var(--color-neutral-200);
+    border: 1.5px solid var(--color-neutral-300);
     border-radius: 9999px;
     background-color: white;
     font-size: 0.875rem;
@@ -321,5 +348,25 @@ const waHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(defau
     border-color: var(--color-brand-500);
     color: var(--color-brand-700);
     background-color: var(--color-brand-50);
+  }
+
+  details[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  .field-error {
+    font-size: 0.75rem;
+    color: var(--color-red-600, #dc2626);
+    margin-top: 2px;
+  }
+
+  .field-input--error {
+    border-color: var(--color-red-500, #ef4444);
+    box-shadow: 0 0 0 1px var(--color-red-500, #ef4444);
+  }
+
+  .field-input--error:focus {
+    border-color: var(--color-red-500, #ef4444);
+    box-shadow: 0 0 0 1px var(--color-red-500, #ef4444);
   }
 </style>
