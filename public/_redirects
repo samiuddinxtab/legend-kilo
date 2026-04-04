@@ -1,1 +1,18 @@
 /home  /  301
+
+# Legacy Motorcycle Content - 410 Gone
+# Domain was previously used for motorcycle content (Yamaha MT-15)
+# These URLs cause topical confusion and should be explicitly removed
+
+/yamaha-mt-15-launches/  410
+/yamaha-mt-15-launches  410
+/new-yamaha-mt-15-launched/  410
+/new-yamaha-mt-15-launched  410
+/yamaha-mt-15/  410
+/yamaha-mt-15  410
+
+# Pattern-based cleanup for other unknown motorcycle URLs
+# Using specific patterns that won't conflict with current bag manufacturing content
+/*-yamaha-*  410
+/*-mt-*-launch*  410
+/*-bike-*  410

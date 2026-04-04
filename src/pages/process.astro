@@ -9,9 +9,37 @@ import { PROCESS_STEPS } from '../data/site';
 
 const title = "Process | LEGEND INDUSTRIES";
 const description = "How bulk orders work at LEGEND INDUSTRIES. Simple, structured process from requirement sharing to delivery. 1–3 week production timelines.";
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Bulk Bag Order Process",
+  description: "Step-by-step guide to ordering custom bags and corporate gifts from LEGEND INDUSTRIES",
+  image: "https://legendindustry.in/og-image.jpg",
+  step: PROCESS_STEPS.map((step, index) => ({
+    "@type": "HowToStep",
+    position: index + 1,
+    name: step.title,
+    text: step.desc,
+    itemListElement: step.details.map((detail) => ({
+      "@type": "HowToDirection",
+      text: detail,
+    })),
+  })),
+  totalTime: "PT3W",
+  supply: [
+    { "@type": "HowToSupply", name: "Product requirements" },
+    { "@type": "HowToSupply", name: "Logo/artwork" },
+    { "@type": "HowToSupply", name: "Order quantity" },
+  ],
+  tool: [
+    { "@type": "HowToTool", name: "WhatsApp or email communication" },
+  ],
+};
 ---
 
 <BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
   <Header />
 
   <main id="main-content">

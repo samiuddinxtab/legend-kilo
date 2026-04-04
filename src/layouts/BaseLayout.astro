@@ -196,6 +196,31 @@ const productSchema = {
   },
 };
 
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "SpeakableSpecification",
+  cssSelector: ["h1", ".description-text", ".faq-answer"],
+  xpath: ["//h1", "//p[contains(@class, 'description')]", "//dd"],
+};
+
+const geoSchema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  name: "Hyderabad, Telangana",
+  description: "Manufacturing facility location for LEGEND INDUSTRIES",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Hyderabad",
+    addressRegion: "Telangana",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "17.3850",
+    longitude: "78.4867",
+  },
+};
+
 function getBreadcrumbSchema(urlPath: string) {
   const pathParts = urlPath.split('/').filter(Boolean);
   if (pathParts.length === 0) return null;
@@ -288,6 +313,8 @@ const breadcrumbSchema = getBreadcrumbSchema(currentPath);
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(speakableSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(geoSchema)} />
     {showFaq && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
     {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
   </head>
